@@ -1,16 +1,16 @@
 {
     "metadata": {
-        "generated_at": "2026-01-09 15:02:28 KST",
+        "generated_at": "2026-01-09 15:08:33 KST",
         "pipeline_stats": {
             "universe": 5246,
-            "s1_filtered": 48,
-            "s2_checked": 48,
-            "final_ready": 26
+            "s1_filtered": 51,
+            "s2_checked": 51,
+            "final_ready": 27
         },
         "system_logs": [
             "✅ [Step 1] Universe Secured: 5,246 tickers found.",
-            "✅ [Step 2] Technical Scan: 48 candidates survived the drop.",
-            "✅ [Step 3] News Filter: 48 candidates passed risk check.",
+            "✅ [Step 2] Technical Scan: 51 candidates survived the drop.",
+            "✅ [Step 3] News Filter: 51 candidates passed risk check.",
             "🏁 [System] Report generation complete."
         ]
     },
@@ -25,31 +25,31 @@
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AAON",
-            "price": 80.76,
+            "price": 80.05,
             "metrics": {
-                "drop_rate": -41.17,
-                "rec_rate": 0.10339999999999999
-            },
-            "evidence": {
-                "s4_tag": "READY"
-            },
-            "context": "nan"
-        },
-        {
-            "ticker": "AAPD",
-            "price": 13.89,
-            "metrics": {
-                "drop_rate": -35.22,
-                "rec_rate": 0.0941
+                "drop_rate": -41.69,
+                "rec_rate": 0.09369999999999999
             },
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
+        },
+        {
+            "ticker": "AAPD",
+            "price": 13.86,
+            "metrics": {
+                "drop_rate": -35.36,
+                "rec_rate": 0.0917
+            },
+            "evidence": {
+                "s4_tag": "WATCH"
+            },
+            "context": "No significant news found"
         },
         {
             "ticker": "AAPG",
@@ -61,103 +61,115 @@
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ABEO",
-            "price": 5.28,
+            "price": 5.24,
             "metrics": {
-                "drop_rate": -30.04,
-                "rec_rate": 0.099
+                "drop_rate": -30.5,
+                "rec_rate": 0.0917
             },
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ABP",
-            "price": 4.1,
+            "price": 4.09,
             "metrics": {
-                "drop_rate": -90.44,
-                "rec_rate": 0.08470000000000001
+                "drop_rate": -90.47,
+                "rec_rate": 0.08199999999999999
             },
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ABTC",
-            "price": 1.85,
+            "price": 1.83,
             "metrics": {
-                "drop_rate": -87.37,
-                "rec_rate": 0.1858
+                "drop_rate": -87.51,
+                "rec_rate": 0.17309999999999998
             },
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ABTS",
-            "price": 5.57,
+            "price": 5.53,
             "metrics": {
-                "drop_rate": -48.69,
-                "rec_rate": 0.1008
+                "drop_rate": -49.06,
+                "rec_rate": 0.0929
             },
             "evidence": {
-                "s4_tag": "READY"
+                "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ABVC",
-            "price": 2.26,
+            "price": 2.27,
             "metrics": {
-                "drop_rate": -58.76,
-                "rec_rate": 0.1501
+                "drop_rate": -58.58,
+                "rec_rate": 0.1552
             },
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ACDC",
-            "price": 4.07,
+            "price": 4.01,
             "metrics": {
-                "drop_rate": -61.96,
-                "rec_rate": 0.1075
+                "drop_rate": -62.52,
+                "rec_rate": 0.09119999999999999
+            },
+            "evidence": {
+                "s4_tag": "WATCH"
+            },
+            "context": "No significant news found"
+        },
+        {
+            "ticker": "ACET",
+            "price": 8.03,
+            "metrics": {
+                "drop_rate": -53.96,
+                "rec_rate": 0.0909
+            },
+            "evidence": {
+                "s4_tag": "WATCH"
+            },
+            "context": "No significant news found"
+        },
+        {
+            "ticker": "ACLX",
+            "price": 64.87,
+            "metrics": {
+                "drop_rate": -31.04,
+                "rec_rate": 0.0748
+            },
+            "evidence": {
+                "s4_tag": "WATCH"
+            },
+            "context": "No significant news found"
+        },
+        {
+            "ticker": "ACON",
+            "price": 5.16,
+            "metrics": {
+                "drop_rate": -99.58,
+                "rec_rate": 0.1956
             },
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
-        },
-        {
-            "ticker": "ACET",
-            "price": 8.02,
-            "metrics": {
-                "drop_rate": -54.01,
-                "rec_rate": 0.0897
-            },
-            "evidence": {
-                "s4_tag": "WATCH"
-            },
-            "context": "nan"
-        },
-        {
-            "ticker": "ACLX",
-            "price": 65.49,
-            "metrics": {
-                "drop_rate": -30.39,
-                "rec_rate": 0.085
-            },
-            "evidence": {
-                "s4_tag": "WATCH"
-            },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ACTU",
@@ -169,7 +181,7 @@
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ADAG",
@@ -181,43 +193,55 @@
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ADGM",
-            "price": 0.97,
+            "price": 0.96,
             "metrics": {
-                "drop_rate": -66.32,
-                "rec_rate": 0.1935
+                "drop_rate": -66.55,
+                "rec_rate": 0.1852
             },
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ADIL",
             "price": 0.24,
             "metrics": {
-                "drop_rate": -81.72,
-                "rec_rate": 0.08
+                "drop_rate": -81.73,
+                "rec_rate": 0.0795
             },
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
+        },
+        {
+            "ticker": "ADTX",
+            "price": 0.86,
+            "metrics": {
+                "drop_rate": -99.99,
+                "rec_rate": 0.059000000000000004
+            },
+            "evidence": {
+                "s4_tag": "WATCH"
+            },
+            "context": "No significant news found"
         },
         {
             "ticker": "ADV",
-            "price": 0.86,
+            "price": 0.84,
             "metrics": {
-                "drop_rate": -70.72,
-                "rec_rate": 0.0933
+                "drop_rate": -71.44,
+                "rec_rate": 0.0666
             },
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ADXN",
@@ -229,55 +253,43 @@
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AEHR",
-            "price": 23.21,
+            "price": 23.08,
             "metrics": {
-                "drop_rate": -32.43,
-                "rec_rate": 0.1663
+                "drop_rate": -32.81,
+                "rec_rate": 0.1598
             },
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
-        },
-        {
-            "ticker": "AFCG",
-            "price": 2.84,
-            "metrics": {
-                "drop_rate": -64.38,
-                "rec_rate": 0.0558
-            },
-            "evidence": {
-                "s4_tag": "WATCH"
-            },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AGAE",
             "price": 0.37,
             "metrics": {
                 "drop_rate": -90.2,
-                "rec_rate": 0.0959
+                "rec_rate": 0.0956
             },
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AGIO",
-            "price": 28.39,
+            "price": 28.21,
             "metrics": {
-                "drop_rate": -38.28,
-                "rec_rate": 0.1751
+                "drop_rate": -38.67,
+                "rec_rate": 0.16760000000000003
             },
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AGMH",
@@ -289,7 +301,7 @@
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AHG",
@@ -301,7 +313,7 @@
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AIHS",
@@ -313,7 +325,7 @@
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AIMD",
@@ -325,31 +337,31 @@
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AIOT",
-            "price": 5.59,
+            "price": 5.51,
             "metrics": {
-                "drop_rate": -35.88,
-                "rec_rate": 0.09300000000000001
+                "drop_rate": -36.74,
+                "rec_rate": 0.0783
             },
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AIRE",
-            "price": 0.48,
+            "price": 0.47,
             "metrics": {
-                "drop_rate": -76.82,
-                "rec_rate": 0.19649999999999998
+                "drop_rate": -77.26,
+                "rec_rate": 0.1734
             },
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AIRG",
@@ -361,19 +373,31 @@
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
-            "ticker": "AISP",
-            "price": 3.18,
+            "ticker": "AIRS",
+            "price": 2.17,
             "metrics": {
-                "drop_rate": -55.83,
-                "rec_rate": 0.1734
+                "drop_rate": -81.88,
+                "rec_rate": 0.1885
             },
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
+        },
+        {
+            "ticker": "AISP",
+            "price": 3.12,
+            "metrics": {
+                "drop_rate": -56.66,
+                "rec_rate": 0.1514
+            },
+            "evidence": {
+                "s4_tag": "READY"
+            },
+            "context": "No significant news found"
         },
         {
             "ticker": "AIXC",
@@ -385,7 +409,7 @@
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AIXI",
@@ -397,14 +421,14 @@
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AKAN",
             "price": 0.47,
             "metrics": {
-                "drop_rate": -94.96,
-                "rec_rate": 0.1245
+                "drop_rate": -94.99,
+                "rec_rate": 0.1195
             },
             "evidence": {
                 "s4_tag": "READY"
@@ -413,58 +437,58 @@
         },
         {
             "ticker": "ALAB",
-            "price": 156.63,
+            "price": 156.57,
             "metrics": {
-                "drop_rate": -40.42,
-                "rec_rate": 0.11800000000000001
+                "drop_rate": -40.44,
+                "rec_rate": 0.1176
             },
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ALDX",
-            "price": 4.26,
+            "price": 4.2,
             "metrics": {
-                "drop_rate": -40.84,
-                "rec_rate": 0.0812
+                "drop_rate": -41.67,
+                "rec_rate": 0.066
             },
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ALT",
-            "price": 4.1,
+            "price": 4.09,
             "metrics": {
-                "drop_rate": -46.91,
-                "rec_rate": 0.1793
+                "drop_rate": -47.15,
+                "rec_rate": 0.1739
             },
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ALVO",
-            "price": 4.8,
+            "price": 4.78,
             "metrics": {
-                "drop_rate": -64.96,
-                "rec_rate": 0.0909
+                "drop_rate": -65.11,
+                "rec_rate": 0.0864
             },
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AMDD",
-            "price": 9.81,
+            "price": 9.86,
             "metrics": {
-                "drop_rate": -70.83,
-                "rec_rate": 0.14279999999999998
+                "drop_rate": -70.67,
+                "rec_rate": 0.1492
             },
             "evidence": {
                 "s4_tag": "READY"
@@ -473,10 +497,10 @@
         },
         {
             "ticker": "AMDG",
-            "price": 23.98,
+            "price": 23.89,
             "metrics": {
-                "drop_rate": -45.64,
-                "rec_rate": 0.0556
+                "drop_rate": -45.86,
+                "rec_rate": 0.051500000000000004
             },
             "evidence": {
                 "s4_tag": "WATCH"
@@ -485,27 +509,39 @@
         },
         {
             "ticker": "AMDL",
-            "price": 14.15,
+            "price": 14.0,
             "metrics": {
-                "drop_rate": -45.3,
-                "rec_rate": 0.062
+                "drop_rate": -45.86,
+                "rec_rate": 0.051100000000000007
             },
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
-            "ticker": "AMSC",
-            "price": 30.48,
+            "ticker": "AMIX",
+            "price": 0.55,
             "metrics": {
-                "drop_rate": -56.76,
-                "rec_rate": 0.06269999999999999
+                "drop_rate": -83.52,
+                "rec_rate": 0.1635
             },
             "evidence": {
-                "s4_tag": "WATCH"
+                "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
+        },
+        {
+            "ticker": "AMPG",
+            "price": 3.28,
+            "metrics": {
+                "drop_rate": -32.92,
+                "rec_rate": 0.1884
+            },
+            "evidence": {
+                "s4_tag": "READY"
+            },
+            "context": "No significant news found"
         },
         {
             "ticker": "AMST",
@@ -517,79 +553,79 @@
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AMWD",
-            "price": 58.08,
+            "price": 57.12,
             "metrics": {
-                "drop_rate": -30.62,
-                "rec_rate": 0.0875
+                "drop_rate": -31.77,
+                "rec_rate": 0.0695
             },
             "evidence": {
                 "s4_tag": "WATCH"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ANGI",
-            "price": 13.75,
+            "price": 13.71,
             "metrics": {
-                "drop_rate": -33.57,
-                "rec_rate": 0.1516
+                "drop_rate": -33.77,
+                "rec_rate": 0.1482
             },
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ANIX",
-            "price": 3.45,
+            "price": 3.49,
             "metrics": {
-                "drop_rate": -36.81,
-                "rec_rate": 0.1275
+                "drop_rate": -36.08,
+                "rec_rate": 0.1405
             },
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "ANY",
-            "price": 0.34,
+            "price": 0.35,
             "metrics": {
-                "drop_rate": -72.98,
-                "rec_rate": 0.16210000000000002
+                "drop_rate": -72.31,
+                "rec_rate": 0.19079999999999997
             },
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AOSL",
-            "price": 21.99,
+            "price": 21.71,
             "metrics": {
-                "drop_rate": -52.87,
-                "rec_rate": 0.11539999999999999
+                "drop_rate": -53.46,
+                "rec_rate": 0.1015
             },
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         },
         {
             "ticker": "AOUT",
-            "price": 8.75,
+            "price": 8.61,
             "metrics": {
-                "drop_rate": -51.14,
-                "rec_rate": 0.15560000000000002
+                "drop_rate": -51.92,
+                "rec_rate": 0.1371
             },
             "evidence": {
                 "s4_tag": "READY"
             },
-            "context": "nan"
+            "context": "No significant news found"
         }
     ]
 }
