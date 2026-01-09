@@ -1,7 +1,45 @@
-import yfinance as yf
 import pandas as pd
+import requests
+import xml.etree.ElementTree as ET
 import time
 import os
+import re
+
+def clean_html(raw_html):
+    # HTML 태그 제거 및 특수문자 정리
+    cleanr = re.compile('<.*?>')
+    cleantext = re.sub(cleanr, '', raw_html)
+    return cleantext
+
+def get_google_news(ticker):
+    # 구글 뉴스 RSS 주소 (지난 7일간 뉴스 검색)
+    url = f"https://news.google.com/rss/search?q={ticker}+stock+when:7d&hl=en-US&gl=US&ceid=US:en"
+    
+    try:
+        response = requests.get(url, timeout=5)
+        if response.status_code == 200:
+            root = ET.fromstring(response.content)
+            # 뉴스 아이템들 가져오기
+            items = root.findall('./channel/item')
+            
+            if not items:
+                return "No recent news found on Google"
+            
+            # 가장 최신 뉴스 3개의 제목을 합쳐서 반환
+            titles = []
+            for item in items[:2]: # 상위 2개만
+                title = item.find('title').text
+                # 언론사 이름 제거 (ex: - Yahoo Finance)
+                if "-" in title:
+                    title = title.split("-")[0].strip()
+                titles.append(title)
+            
+            return " | ".join(titles)
+            
+    except Exception as e:
+        return f"News Error: {str(e)}"
+    
+    return "No Data"
 
 def analyze_news(input_path="data/candidates_b.csv", output_path="data/candidates_c.csv"):
     if not os.path.exists(input_path):
@@ -15,43 +53,33 @@ def analyze_news(input_path="data/candidates_b.csv", output_path="data/candidate
         return True
 
     results = []
-    # 즉시 탈락시킬 키워드 (파산, 소송, 상장폐지 등)
-    risk_words = ['bankruptcy', 'chapter 11', 'delisting', 'fraud', 'investigation', 'lawsuit']
+    # 절대 안 되는 키워드 (파산 등)
+    risk_words = ['bankruptcy', 'chapter 11', 'delisting', 'fraud', 'investigation']
 
-    print(f"📰 Module C: Analyzing news for {len(df)} candidates...")
+    print(f"📰 Module C: Fetching Google News for {len(df)} Blue-Chips...")
 
-    for _, row in df.iterrows():
-        try:
-            ticker = row['ticker']
-            stock = yf.Ticker(ticker)
-            news_list = stock.news
-            
-            risk_found = False
-            news_summary = "No recent news"
-
-            if news_list:
-                # 최근 뉴스 3개의 제목만 병합해서 검사
-                titles = [n.get('title', '').lower() for n in news_list[:3]]
-                full_text = " ".join(titles)
-                news_summary = titles[0] # 대표 뉴스 하나 저장
-
-                for risk in risk_words:
-                    if risk in full_text:
-                        risk_found = True
-                        print(f"🔻 Filtered out {ticker}: Risk keyword '{risk}' detected.")
-                        break
-            
-            if not risk_found:
-                row['news_top'] = news_summary
-                results.append(row)
-            
-            time.sleep(0.2) # 뉴스 검색은 부하가 크므로 딜레이 더 줌
-
-        except Exception as e:
-            # 에러나면 일단 통과시키되(안전), 로그 남김
-            row['news_top'] = "Error fetching news"
+    for i, row in df.iterrows():
+        ticker = row['ticker']
+        
+        # 구글 뉴스 호출
+        news_summary = get_google_news(ticker)
+        
+        # 리스크 필터링
+        risk_found = False
+        for risk in risk_words:
+            if risk in news_summary.lower():
+                risk_found = True
+                print(f"   🔻 Risk Alert [{ticker}]: {risk} detected.")
+                break
+        
+        if not risk_found:
+            row['news_top'] = news_summary
             results.append(row)
+            print(f"   ✅ [{ticker}] News: {news_summary[:50]}...")
+        
+        # 구글 차단 방지 딜레이
+        time.sleep(0.5)
 
     pd.DataFrame(results).to_csv(output_path, index=False)
-    print(f"✅ Module C: {len(results)} survivors after news filter.")
+    print(f"✅ Module C: Analysis complete. {len(results)} stocks ready.")
     return True
