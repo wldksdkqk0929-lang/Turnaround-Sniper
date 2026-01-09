@@ -1,15 +1,13 @@
 {
     "metadata": {
-        "generated_at": "2026-01-09 23:35:29 KST",
+        "generated_at": "2026-01-09 23:44:03 KST",
         "pipeline_stats": {
             "universe": 5246,
             "s1_filtered": 25,
             "s2_checked": 25,
             "final_ready": 11
         },
-        "system_logs": [
-            "✅ [Step 3] AI Analysis: 25 candidates rated."
-        ]
+        "system_logs": []
     },
     "candidates": [
         {
@@ -21,12 +19,9 @@
             },
             "evidence": {
                 "s4_tag": "READY",
-                "ai_score": 0.4215
+                "analysis_kr": "📉 **하락 요인:** 고점 대비 -39.3% 급락하며 과매도 구간 진입. 최근 뉴스를 통해 악재 소멸 여부 확인 필요.\n🚀 **반등 시그널:** 저점 대비 +13.8% 반등하며 강력한 매수세 유입 확인. 기관 수급이 의심되는 '기술적 턴어라운드' 초기 단계입니다."
             },
-            "context": {
-                "title": "AAON (AAON) Stock Drops: Buying Opportunity Amid Nvidia Chip Con",
-                "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOQnZpOHJuQTh3dTVJc21OSTIxOW5XV29KaUh0VzBoRmFCcTF0eVMtajQ4Z3lfRjZ4dWFUWUdNUFY3UVJBNUFfLXRWQ1JRYkdVSE1HWWM4dTBWeW5IaEk0UV9YOFljM2FTSXpmZUNIa0ZLR1NTSkZHeVNCN1Z0amFYQVRIUTU2SWlmaXFFLUJsNVc1amxHZmpOVGdfSVJpQmZBaTJ2Q3BlOVNDWVNkTEU0UVB3ci02eWha?oc=5"
-            }
+            "context": "AAON (AAON) Stock Drops: Buying Opportunity Amid Nvidia Chip Con"
         },
         {
             "ticker": "AAPG",
@@ -37,12 +32,9 @@
             },
             "evidence": {
                 "s4_tag": "READY",
-                "ai_score": 0.0
+                "analysis_kr": "📉 **하락 요인:** 고점 대비 -40.6% 급락하며 과매도 구간 진입. 최근 뉴스를 통해 악재 소멸 여부 확인 필요.\n🚀 **반등 시그널:** 저점 대비 +11.6% 반등하며 강력한 매수세 유입 확인. 기관 수급이 의심되는 '기술적 턴어라운드' 초기 단계입니다."
             },
-            "context": {
-                "title": "Ascentage Pharma Group Internat (AAPG) Stock Analysis: A Biotech Giant with 69.63% Potential Upside",
-                "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPdF91NTlXREc1bXRYTUpkQXZSX3plVmVUVHloejhkcFppRmRtTFZJN3JoeWtJRWo5Y012ZGhudEo1bTJja2RoeElOUzNlaWxnWmFwZGhxNnZsdnFLb0gzcm5yemhUaFdORFc2T0YtZ21ybHhUQW5CV1VFZmJXQy1QaENoX0NlNEplOEZFOUoyRkVoMmpPdG4zMVJfV2xSOWp1bFNkZFVWeXNSQXExRi1vUk0wUlZDYS1zb2lQTGoycnVIejhnMVZ3cGw4ZlpuRWhjUWdUaW5Ncm1BZVlZNnRF?oc=5"
-            }
+            "context": "Ascentage Pharma Group Internat (AAPG) Stock Analysis: A Biotech Giant with 69.63% Potential Upside"
         },
         {
             "ticker": "ALAB",
@@ -53,12 +45,9 @@
             },
             "evidence": {
                 "s4_tag": "READY",
-                "ai_score": 0.0
+                "analysis_kr": "📉 **하락 요인:** 고점 대비 -38.1% 급락하며 과매도 구간 진입. 최근 뉴스를 통해 악재 소멸 여부 확인 필요.\n🚀 **반등 시그널:** 저점 대비 +16.1% 반등하며 강력한 매수세 유입 확인. 기관 수급이 의심되는 '기술적 턴어라운드' 초기 단계입니다."
             },
-            "context": {
-                "title": "Astera Labs (NASDAQ:ALAB) Stock Price Down 7.5%",
-                "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPZ2FTTTlNa1h5YThWb1prSFJpVVI1Wk5KWVlBX2V2RlNkcDZ0ZWk2R3phRFJZYXNKMEpqbVRzaEJFUk9Oc0dlX2RqWWM4ZWZMem01czlldnFTOUltV2lCQy1fR3VwSF8xc2RqQ3pSVnVYNG5OMVdmQXNnTXhrcUNVVU1XZlh0cjhVMEpmRXRHWDdnR0Z6SnNVUjhJeTYtS2FWbDN1V3pUOXNnUQ?oc=5"
-            }
+            "context": "Astera Labs (NASDAQ:ALAB) Stock Price Down 7.5%"
         },
         {
             "ticker": "BSY",
@@ -69,12 +58,9 @@
             },
             "evidence": {
                 "s4_tag": "WATCH",
-                "ai_score": 0.3612
+                "analysis_kr": "📉 **하락 요인:** -32.1% 하락했으나 아직 바닥 확인 중. 시장 소외주이거나 악재가 진행 중일 가능성 있음.\n⚠️ **관망 필요:** 반등폭이 +6.5%로 미미함. 확실한 거래량 실린 양봉 출현 전까지는 진입 유보 권장."
             },
-            "context": {
-                "title": "Bentley Systems Acquires Talon Aerolytics, and Pointivo Technology, for Asset Analytics Leadership",
-                "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOY2JtSmtNNWJMZ2FYc3FrMnJMdVZSbTN2Q1VnRHFqZFQ3c0NaNW16NmJfN25rNGg5WTdKQzBKbzNrWFNwc3lGcHNQa252cW9zZ2FSNy03bWNEWi1hOVpNdFQxUlg5YUZ4Q0tUSmZMLVIwcFZOTEhxVC1RWENNTkNtd1cyUEV4Qnk0alJzRTNVWjBvWlpjTlJVakJGbHVnLU5pTFk1LU9TRl9Hd1ByN3VsRTdCVUxRODdJTDRnVVU3ZVNoRkw5U2RzRTF3X2FyRlEwVDRPa0FEZHpaTkZoLW8tOTgzZkw2dHJa?oc=5"
-            }
+            "context": "Bentley Systems Acquires Talon Aerolytics, and Pointivo Technology, for Asset Analytics Leadership"
         },
         {
             "ticker": "BTDR",
@@ -85,12 +71,9 @@
             },
             "evidence": {
                 "s4_tag": "READY",
-                "ai_score": 0.296
+                "analysis_kr": "📉 **하락 요인:** 고점 대비 -58.6% 급락하며 과매도 구간 진입. 최근 뉴스를 통해 악재 소멸 여부 확인 필요.\n🚀 **반등 시그널:** 저점 대비 +19.2% 반등하며 강력한 매수세 유입 확인. 기관 수급이 의심되는 '기술적 턴어라운드' 초기 단계입니다."
             },
-            "context": {
-                "title": "BITDEER TECHNOLOGIES GROUP (NASDAQ: BTDR) SHAREHOLDER ALERT",
-                "url": "https://news.google.com/rss/articles/CBMivgJBVV95cUxNY25MbmhMWTJSSE9pWVEzR1kwaFgwZmZ0U0tjeE1pSldRYnlfNGROc25zazk2VHdUdlQwYWVfeEFfX2Rpc3lQLWltb1k0UHJxVDNYM3EtcXJ4eFZIWlF6UnA3UUxoOEREbkdMQUVEVVZqMUV5UnBvZlNkOUtMeFpWRGREWUcxcUNyaU5WTnJDMXJRODBwVmttNHk3WTRWU2owUHFsLXVEMHB5eExvMzdOcFB5RWNPWmc1blAwb040MWUycVJ6YkVrSGpILXNDb0wwY2k2MWE5WlpGVks0X0dOb1F4V1puMTNha2oyYlNOX1RtWVZNd1pCU053eUJZV2lfQ1h5MVMxTjFtTnpHT3JXVTBqNnRObHQ4bE5aeS1MTDluQW8tMG84aFNZSFJJRG82WkJnU0FUbk9UeDNXd2c?oc=5"
-            }
+            "context": "BITDEER TECHNOLOGIES GROUP (NASDAQ: BTDR) SHAREHOLDER ALERT"
         },
         {
             "ticker": "BULL",
@@ -101,12 +84,9 @@
             },
             "evidence": {
                 "s4_tag": "READY",
-                "ai_score": 0.0
+                "analysis_kr": "📉 **하락 요인:** 고점 대비 -89.4% 급락하며 과매도 구간 진입. 최근 뉴스를 통해 악재 소멸 여부 확인 필요.\n🚀 **반등 시그널:** 저점 대비 +10.4% 반등하며 강력한 매수세 유입 확인. 기관 수급이 의심되는 '기술적 턴어라운드' 초기 단계입니다."
             },
-            "context": {
-                "title": "Global Stocks Are Projected to Return 11% in the Next 12 Months",
-                "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOZ1M0YTdudHFEN2ZZblZqa0ljcW1na3RUdmRURm9lRmpLYndSRkFRTm9HR0NYSG5OZ2pOdS1SQS0tUnRHSmV4RTVXRFRYMkE3MnpnTFI3LXBiVE1kUlI1R1hYV09zNFZoMEdkTkE0Yi1uX1dKUk5yZGFtYklueThYZllzSFM1TUJIU0hFeF9OMTJ4Y1hxUWtFOHdCTTBReXJKMV8wTFJRdmZYV0t3ajJ3OFpjdw?oc=5"
-            }
+            "context": "Global Stocks Are Projected to Return 11% in the Next 12 Months"
         },
         {
             "ticker": "BWIN",
@@ -117,12 +97,9 @@
             },
             "evidence": {
                 "s4_tag": "READY",
-                "ai_score": 0.0
+                "analysis_kr": "📉 **하락 요인:** 고점 대비 -44.8% 급락하며 과매도 구간 진입. 최근 뉴스를 통해 악재 소멸 여부 확인 필요.\n🚀 **반등 시그널:** 저점 대비 +18.8% 반등하며 강력한 매수세 유입 확인. 기관 수급이 의심되는 '기술적 턴어라운드' 초기 단계입니다."
             },
-            "context": {
-                "title": "Why Is Baldwin Insurance Group (BWIN) Stock Rocketing Higher Today",
-                "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOOThHaGpZcDJWdURqSjdFLUFjMTJHaU1hN0Nkdk8xUmtEVll5RHBOX1h0NmhleDdESmpzXzdyektNZ0F4bEl1VTJBTWYzZ2Q0Z1Q4Y2ota0d4NlB1X2NyLXBnMXV5OWtkcC1aRC0wVmt4cEIwVjVZQUEwSWlGWnh0ZkdDNTU?oc=5"
-            }
+            "context": "Why Is Baldwin Insurance Group (BWIN) Stock Rocketing Higher Today"
         },
         {
             "ticker": "CDW",
@@ -133,12 +110,9 @@
             },
             "evidence": {
                 "s4_tag": "WATCH",
-                "ai_score": 0.2023
+                "analysis_kr": "📉 **하락 요인:** -39.2% 하락했으나 아직 바닥 확인 중. 시장 소외주이거나 악재가 진행 중일 가능성 있음.\n⚠️ **관망 필요:** 반등폭이 +5.2%로 미미함. 확실한 거래량 실린 양봉 출현 전까지는 진입 유보 권장."
             },
-            "context": {
-                "title": "Who Owns CDW Corporation? Top Shareholders and Recent Insider Activity",
-                "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQM05yRHBRc2tCbHRYb09GaGE3bVVkYUh3UWxvSm55ZFJ0Zkh0OHB0Zzh4MzFOaHpndFNSMFZ1VTZ2SDNJb1ZmaXp3Mm1rMmtPTkVpYVhnTW9lalNOV0Q4UTBoSnNDbGRtaDIwODJQQzB4blFZNHVad3BwdTN3OE5LQnEwXy0xdklUWE5ZQ1NzdmZGMGlsWFFmNzYyRQ?oc=5"
-            }
+            "context": "Who Owns CDW Corporation? Top Shareholders and Recent Insider Activity"
         },
         {
             "ticker": "CLSK",
@@ -149,12 +123,9 @@
             },
             "evidence": {
                 "s4_tag": "READY",
-                "ai_score": 0.296
+                "analysis_kr": "📉 **하락 요인:** 고점 대비 -50.8% 급락하며 과매도 구간 진입. 최근 뉴스를 통해 악재 소멸 여부 확인 필요.\n🚀 **반등 시그널:** 저점 대비 +16.3% 반등하며 강력한 매수세 유입 확인. 기관 수급이 의심되는 '기술적 턴어라운드' 초기 단계입니다."
             },
-            "context": {
-                "title": "CleanSpark (CLSK) Valuation Check After Recent Share Price Rebound",
-                "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPYUFfNU1hSHU1cndWWkQzSjNHUEdWZ1dhNTVGS2FYRGZhTDFhQmlOd0ZTQVE4ZnM2bDRldkNKTUZGeXpady05Z2J0R0ZxWmR4TDN6THUzS1AtQkIwQldud2Z1WGJGZ04xclJFQ1RIMmN5R3ozS2c2OTRzT0Jlc3M5clhPWkxXN094WThhSA?oc=5"
-            }
+            "context": "CleanSpark (CLSK) Valuation Check After Recent Share Price Rebound"
         },
         {
             "ticker": "CNXC",
@@ -165,12 +136,9 @@
             },
             "evidence": {
                 "s4_tag": "READY",
-                "ai_score": 0.0
+                "analysis_kr": "📉 **하락 요인:** 고점 대비 -31.9% 급락하며 과매도 구간 진입. 최근 뉴스를 통해 악재 소멸 여부 확인 필요.\n🚀 **반등 시그널:** 저점 대비 +15.3% 반등하며 강력한 매수세 유입 확인. 기관 수급이 의심되는 '기술적 턴어라운드' 초기 단계입니다."
             },
-            "context": {
-                "title": "Allspring Global Investments Holdings LLC Invests $9.63 Million in Concentrix Corporation $CNXC",
-                "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQWHN5VE81OWctSzdNbXVwd1Z0S25jNVc4Y0JWOGduYnBrSW5SaGVHdkpGckljUndwWWRFR3VZRXZmZ3J3d0lkMUcxTVYtaG5HaldFZmhUQUFOZDdVOW9lTTZHa2RnZnJpUG5NMmY3U1FSekh4cEJjYzRWcU44OTJXOXY5bldraktVUmx2YjRfS1BlcHphNWZuTmVySWpCS3o3b0lVcEdqUXlCOWNER196Y25VSHByWjd4NnZMNmUzSFZZSE9Eb01sVXliaTJIMmxteDBwaXV2SDA3ampPdGhpQW1YZFQwcE1X?oc=5"
-            }
+            "context": "Allspring Global Investments Holdings LLC Invests $9.63 Million in Concentrix Corporation $CNXC"
         },
         {
             "ticker": "COIN",
@@ -181,12 +149,9 @@
             },
             "evidence": {
                 "s4_tag": "WATCH",
-                "ai_score": -0.5994
+                "analysis_kr": "📉 **하락 요인:** -45.9% 하락했으나 아직 바닥 확인 중. 시장 소외주이거나 악재가 진행 중일 가능성 있음.\n⚠️ **관망 필요:** 반등폭이 +6.8%로 미미함. 확실한 거래량 실린 양봉 출현 전까지는 진입 유보 권장."
             },
-            "context": {
-                "title": "Coinbase Chart Flashes Death Cross; Is Coin Stock A Buy Now?",
-                "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5UZEpsdjJ4SFhBR2hHRzNudHFrdkgxTXl1dnBKaUF5M1lJZFhpOTRFYUFIeEtxZFoyRzZ4MjNtaFdpZVhPamFkUzNOMlRxa2RKaFRld3ZoTU93dVhXSVNXSFMzM2VHQQ?oc=5"
-            }
+            "context": "Coinbase Chart Flashes Death Cross; Is Coin Stock A Buy Now?"
         },
         {
             "ticker": "CORT",
@@ -197,12 +162,9 @@
             },
             "evidence": {
                 "s4_tag": "READY",
-                "ai_score": -0.296
+                "analysis_kr": "📉 **하락 요인:** 고점 대비 -68.0% 급락하며 과매도 구간 진입. 최근 뉴스를 통해 악재 소멸 여부 확인 필요.\n🚀 **반등 시그널:** 저점 대비 +13.7% 반등하며 강력한 매수세 유입 확인. 기관 수급이 의심되는 '기술적 턴어라운드' 초기 단계입니다."
             },
-            "context": {
-                "title": "Why Corcept (CORT) Stock Is Trading Lower Today",
-                "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNcHRCU2NVVEt1WnNaMnRqZ291S0xLbXBHRTNMX08yVTJxRmlCRkF5SjFISVdCRjN2b1FCSXU2RjkwQ0hUcTlWU2FRTWlHOHg4LUJsd2VhcS1jWXBQaXNOdVdJWmlZMHJ1NGdlYWtGNURyV0Y4dlE2anVOOFBoX2E4cmNn?oc=5"
-            }
+            "context": "Why Corcept (CORT) Stock Is Trading Lower Today"
         },
         {
             "ticker": "CPRT",
@@ -213,12 +175,9 @@
             },
             "evidence": {
                 "s4_tag": "WATCH",
-                "ai_score": 0.6486
+                "analysis_kr": "📉 **하락 요인:** -37.6% 하락했으나 아직 바닥 확인 중. 시장 소외주이거나 악재가 진행 중일 가능성 있음.\n⚠️ **관망 필요:** 반등폭이 +6.5%로 미미함. 확실한 거래량 실린 양봉 출현 전까지는 진입 유보 권장."
             },
-            "context": {
-                "title": "Is Copart Stock A Good Value Pick For Your Portfolio?",
-                "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPVlBnTjNMeDRXcGtiNFk5Z0FQRUlFbUlmNng2eDBtXzFzZExNU01vbWJtVEtDMEt2aXV1VU1aS29aMDFvc1BDMTJqdm5YOFpHR1NJREJHNzFMM1hiUDVpRHpFVExDSjFGaUdUd0lURkdLZTZSeDV1bV9ucXRZYjRFa1E3UHJtX0RBanc4SUt1V2RuWFZHdEJfMzFNb0FKOTExQkdLMURoc0pCZHlvMUtvWQ?oc=5"
-            }
+            "context": "Is Copart Stock A Good Value Pick For Your Portfolio?"
         },
         {
             "ticker": "CRVL",
@@ -229,12 +188,9 @@
             },
             "evidence": {
                 "s4_tag": "WATCH",
-                "ai_score": 0.34
+                "analysis_kr": "📉 **하락 요인:** -44.5% 하락했으나 아직 바닥 확인 중. 시장 소외주이거나 악재가 진행 중일 가능성 있음.\n⚠️ **관망 필요:** 반등폭이 +9.1%로 미미함. 확실한 거래량 실린 양봉 출현 전까지는 진입 유보 권장."
             },
-            "context": {
-                "title": "Estimating The Intrinsic Value Of CorVel Corporation (NASDAQ:CRVL)",
-                "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNdC1EUHd3S1Q3QjJ6SXotN216RWYyWHRQNWl3UElwb2VBOVBsSllOVk1wdExxUFRoRzltUG5rYURpX0hUdkJaUmpLODhGZUJxaFRaU2NxS3lTNHBpUHlMc2lPZUtnWjk2UDV5aVkxOVlrVUZqX1JOZ0o3b2NNR2V6Z1NlZ2V5andwbXF6UDdETG9rQ1kxc1E?oc=5"
-            }
+            "context": "Estimating The Intrinsic Value Of CorVel Corporation (NASDAQ:CRVL)"
         },
         {
             "ticker": "CVLT",
@@ -245,12 +201,9 @@
             },
             "evidence": {
                 "s4_tag": "WATCH",
-                "ai_score": 0.0
+                "analysis_kr": "📉 **하락 요인:** -38.1% 하락했으나 아직 바닥 확인 중. 시장 소외주이거나 악재가 진행 중일 가능성 있음.\n⚠️ **관망 필요:** 반등폭이 +5.2%로 미미함. 확실한 거래량 실린 양봉 출현 전까지는 진입 유보 권장."
             },
-            "context": {
-                "title": "Commvault Systems (CVLT) Ascends While Market Falls: Some Facts to Note",
-                "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPSUxNQlZQNDc1MXhOS1dYMi1nTmdSUVlCZE5HOG43SG4tbE1zVHQxWE0zajQ5SWt2LTNuYVc2VFExeDhPR0l6dVhWTXR6V0dMX2NPV2p3djBDTnhja2IwOXo4UEgyUkswUGNvZXI5QlFNaFB2M2JMTnBVQ0VIZjF5OFRxUUFuQW9oWXc?oc=5"
-            }
+            "context": "Commvault Systems (CVLT) Ascends While Market Falls: Some Facts to Note"
         },
         {
             "ticker": "CZR",
@@ -261,12 +214,9 @@
             },
             "evidence": {
                 "s4_tag": "WATCH",
-                "ai_score": 0.4939
+                "analysis_kr": "📉 **하락 요인:** -38.4% 하락했으나 아직 바닥 확인 중. 시장 소외주이거나 악재가 진행 중일 가능성 있음.\n⚠️ **관망 필요:** 반등폭이 +7.3%로 미미함. 확실한 거래량 실린 양봉 출현 전까지는 진입 유보 권장."
             },
-            "context": {
-                "title": "Caesars Stock (+9%): Digital Profitability Surprise Ignites Re",
-                "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPelBZU3RHTXVBLXZZZ1lRSDExVTFBODRjTWp3UXBBMHhhRGFGVkZ0VUZ5bUF4eUFlcHNVNF9OX0FQTnpTZVNIejBmOGFTY3hYVURFZnluUVZQc2lzamlpdGVjRlFNejgxTHNqWjNNblJNanV2enhpQjN2N3d6YzhGRlJZQmlVb19pUTI0TmMwNUZUelFZamlwLXZqdGIzTUVuMVpTZmZXNzdDaE9DOTZ2bV9nb01pamlPaHdLMXJtWThhcm9mOThJMEowRQ?oc=5"
-            }
+            "context": "Caesars Stock (+9%): Digital Profitability Surprise Ignites Re"
         },
         {
             "ticker": "DOCU",
@@ -277,12 +227,9 @@
             },
             "evidence": {
                 "s4_tag": "WATCH",
-                "ai_score": 0.3818
+                "analysis_kr": "📉 **하락 요인:** -30.7% 하락했으나 아직 바닥 확인 중. 시장 소외주이거나 악재가 진행 중일 가능성 있음.\n⚠️ **관망 필요:** 반등폭이 +7.4%로 미미함. 확실한 거래량 실린 양봉 출현 전까지는 진입 유보 권장."
             },
-            "context": {
-                "title": "Docusign: We Should See Growth Acceleration Soon (NASDAQ:DOCU)",
-                "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOTHYyajNJREttM1RBTk9saHl5NERPazhvRWNIZFF4a3dPbDBTN2NYWDMyWmJiNDdOdzdfSFNwVkpaTEZGckdyTW5sRjFfelktcUlZRk93N2Z2dTA2Q1gyYXJuMUo1NTJwSmljNFJaY0FmdnVrVU1lRzI0MGs0LWtfUlM0a1YzbnN6SnM5Y2k2TWl5dw?oc=5"
-            }
+            "context": "Docusign: We Should See Growth Acceleration Soon (NASDAQ:DOCU)"
         },
         {
             "ticker": "ENPH",
@@ -293,12 +240,9 @@
             },
             "evidence": {
                 "s4_tag": "READY",
-                "ai_score": 0.2732
+                "analysis_kr": "📉 **하락 요인:** 고점 대비 -50.2% 급락하며 과매도 구간 진입. 최근 뉴스를 통해 악재 소멸 여부 확인 필요.\n🚀 **반등 시그널:** 저점 대비 +13.1% 반등하며 강력한 매수세 유입 확인. 기관 수급이 의심되는 '기술적 턴어라운드' 초기 단계입니다."
             },
-            "context": {
-                "title": "A Look At Enphase Energy (ENPH) Valuation After KeyBanc Upgrade To Sector Weight",
-                "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQZG1FQ25sM0RFbVhURjRXQnA4SnMyZmNyTGpNRW1FNnIwS3RCa1VvNExjLUx1YW1hY09tNTNKVlRFWGxPbXBQZFo4Q2pOZnE2ajlObFBIb01wZXBMNk9fWFhyWkRLSWNVY3NWZk1feWVFTFR2cWJXbUpHay1IdmN2cVN2MGhIdGs?oc=5"
-            }
+            "context": "A Look At Enphase Energy (ENPH) Valuation After KeyBanc Upgrade To Sector Weight"
         },
         {
             "ticker": "FISV",
@@ -309,12 +253,9 @@
             },
             "evidence": {
                 "s4_tag": "WATCH",
-                "ai_score": 0.1263
+                "analysis_kr": "📉 **하락 요인:** -70.7% 하락했으나 아직 바닥 확인 중. 시장 소외주이거나 악재가 진행 중일 가능성 있음.\n⚠️ **관망 필요:** 반등폭이 +8.3%로 미미함. 확실한 거래량 실린 양봉 출현 전까지는 진입 유보 권장."
             },
-            "context": {
-                "title": "Is Fiserv Stock In Deeply Discounted Territory?",
-                "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxObXgyN293M2xUZHNBakdFTkxmbURPYS1neTdFczZsSGgydmxxcEVpMlJkTVBvRU1XMHUzN3FKcFJVZFNHcS1vR2VmNnZ0NmFRT2dWMzlnU1M3UVFvYnZRbGNTdjZHNlZIMlk5UHBGRjVwQzVkVWNKejJPSk9nZzA4TE9tZGNWVXZUcXFuZ0prSjNsMjc1VEJHT3Y4NXVnYlhwc24taTk3SS0?oc=5"
-            }
+            "context": "Is Fiserv Stock In Deeply Discounted Territory?"
         },
         {
             "ticker": "FIZZ",
@@ -325,12 +266,9 @@
             },
             "evidence": {
                 "s4_tag": "WATCH",
-                "ai_score": -0.5562
+                "analysis_kr": "📉 **하락 요인:** -30.9% 하락했으나 아직 바닥 확인 중. 시장 소외주이거나 악재가 진행 중일 가능성 있음.\n⚠️ **관망 필요:** 반등폭이 +6.1%로 미미함. 확실한 거래량 실린 양봉 출현 전까지는 진입 유보 권장."
             },
-            "context": {
-                "title": "Stock Show Parade Today! | Tracy and Fizz's Big Dumb Post Show",
-                "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPcGxEcVdJM1hiYWpMc0pXQ1RScUdpX1QxOERJWUJ2WFF0RjFkQ0FVbGN6ZjRrOTF3T3lZOHpDdWtQaDlSNnpQTE84blZzdENqN2psYmUzS1JHUnYwU29HZzQxSXZLdGl5Uzd2UkNHOUxtaC14eVF2dmxNZ1BoOUYwa3RsazhVMGYyU1R6SDRNeU9tUDdVTjFRb0xtSEF5akxtbHdLMFczSGdQQVUyNzc3ZmVXMXZacEZPOGc?oc=5"
-            }
+            "context": "Stock Show Parade Today! | Tracy and Fizz's Big Dumb Post Show"
         },
         {
             "ticker": "FRHC",
@@ -341,12 +279,9 @@
             },
             "evidence": {
                 "s4_tag": "WATCH",
-                "ai_score": 0.0
+                "analysis_kr": "📉 **하락 요인:** -32.5% 하락했으나 아직 바닥 확인 중. 시장 소외주이거나 악재가 진행 중일 가능성 있음.\n⚠️ **관망 필요:** 반등폭이 +9.0%로 미미함. 확실한 거래량 실린 양봉 출현 전까지는 진입 유보 권장."
             },
-            "context": {
-                "title": "Published on: 2026",
-                "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1IaWlYUF9EY1k2TkdKbmZLRF96cElKaE8tQ0hpOXJNNnloaV9YOEM2Rl80NFlBc0FfMThkcmFyaENVd1dNYjRaVXpYc2hOelUwRkpDSllrTEdfeF9LU1FYYVdvMUJTXzMyLXM0N3V3V1pKMHZRRGJLaDFZVQ?oc=5"
-            }
+            "context": "Published on: 2026"
         },
         {
             "ticker": "FRPT",
@@ -357,12 +292,9 @@
             },
             "evidence": {
                 "s4_tag": "WATCH",
-                "ai_score": 0.6705
+                "analysis_kr": "📉 **하락 요인:** -61.0% 하락했으나 아직 바닥 확인 중. 시장 소외주이거나 악재가 진행 중일 가능성 있음.\n⚠️ **관망 필요:** 반등폭이 +7.7%로 미미함. 확실한 거래량 실린 양봉 출현 전까지는 진입 유보 권장."
             },
-            "context": {
-                "title": "Are Strong Financial Prospects The Force That Is Driving The Momentum In Freshpet, Inc.'s NASDAQ:FRPT) Stock?",
-                "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNdXo4al9fdWRMRjhzbFJQeHozQVZfSFdpMkZTOS13aEtsZFdzY2FIdEVVdzJVRDdXeXk3TGVLQmFWZWNjbkpycVNoSzRRMkR6NVo4ZzVsZWVfcTFxV0F1Vlo0Y1NoNGJwckp4NmhUd3I4LUtUU0ZtbkdJTFpqTG5yd0E3Ukt1aU5EaVFZbUR0Yw?oc=5"
-            }
+            "context": "Are Strong Financial Prospects The Force That Is Driving The Momentum In Freshpet, Inc.'s NASDAQ:FRPT) Stock?"
         },
         {
             "ticker": "FRSH",
@@ -373,12 +305,9 @@
             },
             "evidence": {
                 "s4_tag": "WATCH",
-                "ai_score": 0.0
+                "analysis_kr": "📉 **하락 요인:** -38.1% 하락했으나 아직 바닥 확인 중. 시장 소외주이거나 악재가 진행 중일 가능성 있음.\n⚠️ **관망 필요:** 반등폭이 +6.8%로 미미함. 확실한 거래량 실린 양봉 출현 전까지는 진입 유보 권장."
             },
-            "context": {
-                "title": "Freshworks (FRSH) Stock Is Up, What You Need To Know",
-                "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOWkNmaEVyd3FHeVY4aFNIMDNHWUd6WjBiNEdPb2ktdFpHeXJRVWVsT0FUd2Y0SE5QUU1tVnNZSjdNbWNLeTNPX1ZRd2RVcmVQYjhnRmlzVzZNdnRJU3JBclduaHQ2ZmpIUm1Sc2Z4aE1hT2xsRFQzQjhIeU4xODF0Y2tqZUllY00?oc=5"
-            }
+            "context": "Freshworks (FRSH) Stock Is Up, What You Need To Know"
         },
         {
             "ticker": "GLBE",
@@ -389,12 +318,9 @@
             },
             "evidence": {
                 "s4_tag": "READY",
-                "ai_score": 0.0
+                "analysis_kr": "📉 **하락 요인:** 고점 대비 -34.7% 급락하며 과매도 구간 진입. 최근 뉴스를 통해 악재 소멸 여부 확인 필요.\n🚀 **반등 시그널:** 저점 대비 +11.6% 반등하며 강력한 매수세 유입 확인. 기관 수급이 의심되는 '기술적 턴어라운드' 초기 단계입니다."
             },
-            "context": {
-                "title": "1 Small",
-                "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPSGhjQVUtYW9RVnpaeVdKY01EU2RkbkI2UHpSTlFNT09hZDRYbVFQTV9vSk81Qk1QOHJBYVdDQjRTd1ppN1RGZ1NzbVo4X0tTRjhnRUhGajN3TWdPbVBNN3UxSlVQbWxHemJKbVduSmRIb3B2X2VwZW01LVJtWWM4UHJwNA?oc=5"
-            }
+            "context": "1 Small"
         },
         {
             "ticker": "GSHD",
@@ -405,12 +331,9 @@
             },
             "evidence": {
                 "s4_tag": "WATCH",
-                "ai_score": 0.4404
+                "analysis_kr": "📉 **하락 요인:** -41.5% 하락했으나 아직 바닥 확인 중. 시장 소외주이거나 악재가 진행 중일 가능성 있음.\n⚠️ **관망 필요:** 반등폭이 +8.5%로 미미함. 확실한 거래량 실린 양봉 출현 전까지는 진입 유보 권장."
             },
-            "context": {
-                "title": "What Makes GooseHead Insurance (GSHD) Attractive",
-                "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNTXhwRGlYUTJUOGFBakFXNXBaV2FERU01dlBRYWgzRXdYWTRRbU5sZXptZXE5bW93YTJtbmZuMV9MWEtmUnVSVGlSS3FSSTBkeXNKdmI5SVVtS1ZPdUUyN3dUa0g3YTlhTGZCeElYTkYzNjZLcDN2VVh3UjFtUHI0WkNVYlFTYmRfRW10Q1VaeEI?oc=5"
-            }
+            "context": "What Makes GooseHead Insurance (GSHD) Attractive"
         }
     ]
 }
