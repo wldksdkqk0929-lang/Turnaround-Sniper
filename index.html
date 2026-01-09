@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sniper Pro | Operation Dashboard</title>
+    <title>Sniper Pro | AI Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
@@ -11,71 +11,29 @@
         .card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; }
         .status-ready { color: #3fb950; background: rgba(63, 185, 80, 0.1); border: 1px solid rgba(63, 185, 80, 0.3); }
         .status-watch { color: #58a6ff; background: rgba(88, 166, 255, 0.1); border: 1px solid rgba(88, 166, 255, 0.3); }
-        .log-box { background: #010409; border: 1px solid #30363d; font-family: 'Courier New', monospace; }
     </style>
 </head>
-<body class="p-4 md:p-8">
-
-    <header class="max-w-6xl mx-auto flex justify-between items-end mb-10">
+<body class="p-2 md:p-8">
+    <header class="max-w-6xl mx-auto flex justify-between items-end mb-6">
         <div>
-            <h1 class="text-3xl font-extrabold tracking-tight text-white">🎯 Turnaround Sniper <span class="text-blue-500 text-sm font-normal ml-2">Pro v2.2</span></h1>
-            <p class="text-gray-500 mt-2">미국 주식 역발상 전략 운용 패널</p>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-white">🎯 Sniper <span class="text-purple-400">AI</span></h1>
+            <p class="text-xs text-gray-500">Sentiment Analysis & Blue-Chip Strategy</p>
         </div>
-        <div id="last-update" class="text-xs font-mono text-gray-500">
-            CONNECTING TO SERVER...
-        </div>
+        <div id="last-update" class="text-[10px] font-mono text-gray-500">LOADING...</div>
     </header>
 
-    <section class="max-w-6xl mx-auto card p-6 mb-8">
-        <h2 class="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-6">Pipeline Live Status</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div>
-                <span class="block text-2xl font-bold text-white" id="stat-unv">-</span>
-                <span class="text-xs text-gray-500">Universe</span>
-            </div>
-            <div>
-                <span class="block text-2xl font-bold text-blue-400" id="stat-s1">-</span>
-                <span class="text-xs text-gray-500">S1. Drawdown</span>
-            </div>
-            <div>
-                <span class="block text-2xl font-bold text-purple-400" id="stat-s2">-</span>
-                <span class="text-xs text-gray-500">S2. News Filter</span>
-            </div>
-            <div>
-                <span class="block text-2xl font-bold text-green-500" id="stat-s3">-</span>
-                <span class="text-xs text-gray-500">Final Ready</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto mb-8">
-        <div class="card p-4">
-            <h3 class="text-xs font-bold text-gray-400 mb-2">📟 SYSTEM LOGS</h3>
-            <div id="system-logs" class="log-box p-3 text-xs text-green-400 h-32 overflow-y-auto rounded">
-                Scanning system logs...
-            </div>
-        </div>
-    </section>
-
-    <main class="max-w-6xl mx-auto space-y-6">
-        <div class="flex items-center space-x-2 mb-4">
-            <div class="h-4 w-1 bg-green-500"></div>
-            <h3 class="text-lg font-bold text-white">Operational Candidates</h3>
-        </div>
-
+    <main class="max-w-6xl mx-auto">
         <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse card">
                 <thead>
-                    <tr class="text-xs uppercase text-gray-500 border-b border-gray-800">
-                        <th class="p-4">Ticker / Price</th>
+                    <tr class="text-[10px] uppercase text-gray-500 border-b border-gray-800">
+                        <th class="p-4">Ticker</th>
+                        <th class="p-4">AI Score</th>
                         <th class="p-4">Strategy</th>
-                        <th class="p-4">Tag</th>
-                        <th class="p-4">Context & News</th>
+                        <th class="p-4">News Intelligence (Click to Read)</th>
                     </tr>
                 </thead>
-                <tbody id="candidate-body" class="divide-y divide-gray-800">
-                    <tr><td colspan="4" class="p-8 text-center text-gray-600">데이터 로딩 중...</td></tr>
-                </tbody>
+                <tbody id="candidate-body" class="divide-y divide-gray-800"></tbody>
             </table>
         </div>
     </main>
@@ -83,77 +41,62 @@
     <script>
         async function loadDashboard() {
             try {
-                // 데이터 캐싱 방지를 위해 timestamp 추가
                 const response = await fetch('data/data.json?t=' + Date.now());
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
                 const data = await response.json();
+                document.getElementById('last-update').innerText = data.metadata.generated_at;
 
-                // 1. 통계 업데이트
-                document.getElementById('last-update').innerText = `LAST RUN: ${data.metadata.generated_at}`;
-                document.getElementById('stat-unv').innerText = data.metadata.pipeline_stats.universe.toLocaleString();
-                document.getElementById('stat-s1').innerText = data.metadata.pipeline_stats.s1_filtered.toLocaleString();
-                document.getElementById('stat-s2').innerText = data.metadata.pipeline_stats.s2_checked.toLocaleString();
-                document.getElementById('stat-s3').innerText = data.metadata.pipeline_stats.final_ready.toLocaleString();
-
-                // 2. 로그 업데이트 (NEW)
-                const logBox = document.getElementById('system-logs');
-                if (data.metadata.system_logs && data.metadata.system_logs.length > 0) {
-                    logBox.innerHTML = data.metadata.system_logs.map(log => `<div>> ${log}</div>`).join('');
-                } else {
-                    logBox.innerHTML = '<div class="text-gray-500">No logs available.</div>';
-                }
-
-                // 3. 테이블 업데이트
                 const body = document.getElementById('candidate-body');
                 body.innerHTML = '';
 
-                if (data.candidates.length === 0) {
-                    body.innerHTML = `<tr><td colspan="4" class="p-10 text-center text-gray-500">
-                        현재 조건에 맞는 종목이 없습니다.<br>
-                        <span class="text-xs text-gray-600">위 로그를 확인하여 오류 여부를 점검하세요.</span>
-                    </td></tr>`;
-                    return;
-                }
-
                 data.candidates.forEach(stock => {
                     const tagClass = stock.evidence.s4_tag === 'READY' ? 'status-ready' : 'status-watch';
-                    const recRate = (stock.metrics.rec_rate * 100).toFixed(1);
-                    const dropRate = stock.metrics.drop_rate.toFixed(1);
+                    const score = stock.evidence.ai_score;
+                    
+                    // AI 점수 시각화 (색상 및 길이)
+                    let scoreColor = 'bg-gray-600';
+                    let scoreWidth = Math.abs(score) * 40; // 최대 40px 길이
+                    if(score > 0.2) scoreColor = 'bg-green-500';
+                    if(score < -0.2) scoreColor = 'bg-red-500';
+
+                    // 뉴스 링크 처리
+                    const newsTitle = stock.context.title || stock.context; 
+                    const newsUrl = stock.context.url || '#';
 
                     const row = `
                         <tr class="hover:bg-gray-800/50 transition-colors">
                             <td class="p-4">
                                 <div class="text-lg font-bold text-white">${stock.ticker}</div>
                                 <div class="text-sm text-gray-500">$${stock.price}</div>
+                                <span class="mt-1 px-2 py-0.5 rounded text-[10px] font-bold ${tagClass}">${stock.evidence.s4_tag}</span>
                             </td>
                             <td class="p-4">
-                                <div class="text-xs text-gray-400">Drop: <span class="text-red-400">${dropRate}%</span></div>
-                                <div class="text-xs text-gray-400">Recv: <span class="text-green-400">+${recRate}%</span></div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="text-xs font-mono w-8 text-right">${score.toFixed(2)}</div>
+                                    <div class="h-2 w-20 bg-gray-700 rounded-full overflow-hidden relative">
+                                        <div class="h-full ${scoreColor} absolute" style="width: ${Math.max(scoreWidth, 5)}%; left: 50%; transform: translateX(${score < 0 ? '-100%' : '0'});"></div>
+                                        <div class="h-full w-0.5 bg-white/20 absolute left-1/2"></div>
+                                    </div>
+                                </div>
+                                <div class="text-[10px] text-gray-500 mt-1">${score > 0.2 ? 'Positive' : (score < -0.2 ? 'Negative' : 'Neutral')}</div>
                             </td>
                             <td class="p-4">
-                                <span class="px-3 py-1 rounded-full text-xs font-bold ${tagClass}">
-                                    ${stock.evidence.s4_tag}
-                                </span>
+                                <div class="text-xs text-red-400">Drop: ${stock.metrics.drop_rate.toFixed(1)}%</div>
+                                <div class="text-xs text-green-400">Recv: +${(stock.metrics.rec_rate * 100).toFixed(1)}%</div>
                             </td>
                             <td class="p-4 max-w-md">
-                                <p class="text-sm text-gray-400 line-clamp-2">${stock.context}</p>
+                                <a href="${newsUrl}" target="_blank" class="group">
+                                    <p class="text-sm text-gray-300 font-medium group-hover:text-blue-400 transition-colors line-clamp-2">
+                                        ${newsTitle} 🔗
+                                    </p>
+                                    <p class="text-[10px] text-gray-600 mt-1 group-hover:text-blue-500">Google News Source &rarr;</p>
+                                </a>
                             </td>
                         </tr>
                     `;
                     body.insertAdjacentHTML('beforeend', row);
                 });
-
-            } catch (err) {
-                console.error("Dashboard Load Failed:", err);
-                document.getElementById('system-logs').innerHTML = `<div class="text-red-500">CRITICAL ERROR: Failed to load data.json<br>${err.message}</div>`;
-                document.getElementById('candidate-body').innerHTML = `<tr><td colspan="4" class="p-10 text-center text-red-500">데이터 파일(data.json)을 찾을 수 없습니다.<br>Actions 탭에서 파이프라인 실행 여부를 확인하세요.</td></tr>`;
-            }
+            } catch (err) { console.error(err); }
         }
-
         loadDashboard();
     </script>
 </body>
