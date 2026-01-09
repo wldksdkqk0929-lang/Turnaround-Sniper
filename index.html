@@ -3,96 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sniper Pro | 지휘 통제실</title>
+    <title>Sniper Pro | Command Center V3</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800&display=swap');
         body { font-family: 'Pretendard', sans-serif; background-color: #0b0e11; color: #e6edf3; }
         
-        /* 카드 및 레이아웃 스타일 */
-        .card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        .header-gradient { background: linear-gradient(90deg, #161b22 0%, #0d1117 100%); }
+        .card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; }
+        .card:hover { border-color: #58a6ff; transition: 0.3s; }
         
-        /* 상태 태그 */
-        .tag-ready { background-color: rgba(46, 160, 67, 0.15); color: #3fb950; border: 1px solid rgba(46, 160, 67, 0.4); }
-        .tag-watch { background-color: rgba(56, 139, 253, 0.15); color: #58a6ff; border: 1px solid rgba(56, 139, 253, 0.4); }
-        
-        /* 아코디언 애니메이션 */
-        .hidden-row { display: none; }
-        .expanded-row { background-color: #1c2128; border-top: 1px dashed #30363d; animation: slideDown 0.3s ease-out; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Elite 5 카드 스타일 */
+        .elite-card { background: linear-gradient(145deg, #161b22 0%, #1c2128 100%); border: 1px solid #3fb950; position: relative; overflow: hidden; }
+        .elite-badge { position: absolute; top: 0; right: 0; background: #3fb950; color: #000; font-weight: bold; font-size: 0.7rem; padding: 2px 8px; border-bottom-left-radius: 8px; }
 
-        /* 프로그레스 바 스타일 (지휘관님이 좋아하신 스타일) */
-        .bar-bg { background-color: #30363d; height: 6px; border-radius: 3px; overflow: hidden; }
-        .bar-fill-red { background-color: #fa7970; height: 100%; }
-        .bar-fill-green { background-color: #3fb950; height: 100%; }
+        /* 가격 위치 바 (Range Bar) 스타일 */
+        .range-track { width: 100%; height: 8px; background: #30363d; border-radius: 4px; position: relative; margin-top: 15px; margin-bottom: 5px; }
+        .range-fill { height: 100%; background: linear-gradient(90deg, #3fb950, #2ea043); border-radius: 4px; opacity: 0.5; }
+        .current-marker { 
+            position: absolute; top: -6px; width: 4px; height: 20px; background: #fff; 
+            box-shadow: 0 0 8px rgba(255,255,255,0.8); z-index: 10; transform: translateX(-50%);
+        }
+        .price-label { font-size: 0.7rem; color: #8b949e; position: absolute; top: 18px; }
+        .price-label.low { left: 0; }
+        .price-label.high { right: 0; }
+        .price-label.current { top: -20px; color: #fff; font-weight: bold; transform: translateX(-50%); }
+
+        .hidden-row { display: none; }
+        .expanded-row { background-color: #11141a; border-top: 1px dashed #30363d; }
     </style>
 </head>
 <body class="p-4 md:p-8 max-w-7xl mx-auto">
 
-    <header class="flex justify-between items-end mb-8 pb-4 border-b border-gray-800">
+    <header class="flex justify-between items-center mb-8 border-b border-gray-800 pb-4">
         <div>
-            <h1 class="text-3xl font-extrabold tracking-tight flex items-center">
-                <i class="fa-solid fa-crosshairs text-red-500 mr-3"></i>
+            <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight flex items-center text-white">
+                <i class="fa-solid fa-crosshairs text-green-500 mr-3"></i>
                 Turnaround Sniper
-                <span class="ml-3 text-xs font-normal text-gray-500 border border-gray-700 px-2 py-0.5 rounded">Pro v2.3</span>
+                <span class="ml-3 text-xs font-normal text-black bg-green-500 px-2 py-0.5 rounded font-bold">V3.0 ELITE</span>
             </h1>
-            <p class="text-gray-400 text-sm mt-2 ml-1">AI 기반 미국 주식 역발상 투자 시스템</p>
         </div>
-        <div class="text-right hidden md:block">
-            <div id="last-update" class="text-xs font-mono text-gray-500">데이터 수신 대기중...</div>
-            <div class="text-xs text-green-500 mt-1 font-bold"><i class="fa-solid fa-satellite-dish mr-1"></i>Server Online</div>
+        <div class="text-right">
+            <div id="last-update" class="text-xs font-mono text-gray-500">UPDATING...</div>
+            <div class="text-xs text-green-500 font-bold"><i class="fa-solid fa-wifi mr-1"></i>Live</div>
         </div>
     </header>
 
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        <div class="card p-5 border-l-4 border-green-500 relative overflow-hidden">
-            <div class="absolute right-[-20px] top-[-20px] text-green-900/20 text-9xl font-bold"><i class="fa-brands fa-searchengin"></i></div>
-            <h3 class="text-gray-400 text-xs font-bold uppercase mb-2">🔥 오늘의 원픽 (Top Pick)</h3>
-            <div id="top-pick-ticker" class="text-3xl font-bold text-white z-10 relative">-</div>
-            <div id="top-pick-desc" class="text-sm text-gray-400 mt-2 z-10 relative leading-relaxed">분석 중입니다...</div>
+    <section class="mb-12">
+        <div class="flex items-center space-x-2 mb-4">
+            <i class="fa-solid fa-star text-yellow-400"></i>
+            <h2 class="text-lg font-bold text-white">Top 5 Elite Strategies</h2>
+            <span class="text-xs text-gray-500 ml-2">반등 모멘텀이 가장 강력한 상위 5개 종목</span>
         </div>
-
-        <div class="card p-5 border-l-4 border-blue-500">
-            <h3 class="text-gray-400 text-xs font-bold uppercase mb-2">📊 시장 포지션</h3>
-            <div class="flex items-center justify-between mb-2">
-                <span class="text-xs text-red-400">공포 (Over-sold)</span>
-                <span class="text-xs text-green-400">탐욕 (Over-bought)</span>
-            </div>
-            <div class="bar-bg mb-2">
-                <div class="bg-blue-500 h-full rounded-full" style="width: 20%"></div> </div>
-            <p class="text-xs text-gray-400">현재 포착된 종목들은 대다수 <span class="text-white font-bold">과매도 구간</span>에 위치해 있습니다.</p>
-        </div>
-
-        <div class="card p-5 border-l-4 border-purple-500">
-            <h3 class="text-gray-400 text-xs font-bold uppercase mb-2">📡 스캔 현황</h3>
-            <div class="flex justify-between items-center mt-4">
-                <div class="text-center">
-                    <span class="block text-2xl font-bold text-white" id="stat-total">-</span>
-                    <span class="text-[10px] text-gray-500">검색된 종목</span>
-                </div>
-                <div class="text-gray-600"><i class="fa-solid fa-arrow-right"></i></div>
-                <div class="text-center">
-                    <span class="block text-2xl font-bold text-green-400" id="stat-ready">-</span>
-                    <span class="text-[10px] text-gray-500">최종 타겟</span>
-                </div>
-            </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4" id="elite-container">
+            <div class="col-span-5 text-center text-gray-600 py-10">데이터 분석 중...</div>
         </div>
     </section>
 
     <main>
         <div class="flex items-center justify-between mb-4">
             <div class="flex items-center space-x-2">
-                <i class="fa-solid fa-list-ul text-green-500"></i>
-                <h3 class="text-lg font-bold text-white">작전 후보군 (Candidates)</h3>
+                <i class="fa-solid fa-list text-gray-400"></i>
+                <h3 class="text-lg font-bold text-white">All Candidates</h3>
             </div>
-            <span class="text-xs text-gray-500"><i class="fa-solid fa-computer-mouse mr-1"></i>항목을 클릭하여 상세 분석 확인</span>
+            <span class="text-xs text-gray-500"><i class="fa-solid fa-info-circle mr-1"></i>리스트를 클릭하여 상세 분석 확인</span>
         </div>
 
         <div class="flex flex-col space-y-3" id="candidate-list">
-            <div class="p-10 text-center text-gray-600">데이터 로딩 중...</div>
-        </div>
+            </div>
     </main>
 
     <script>
@@ -101,92 +80,136 @@
                 const response = await fetch('data/data.json?t=' + Date.now());
                 const data = await response.json();
 
-                // 1. 상단 브리핑 업데이트
-                document.getElementById('last-update').innerText = `최근 업데이트: ${data.metadata.generated_at}`;
-                document.getElementById('stat-total').innerText = (data.metadata.pipeline_stats.universe || 5200).toLocaleString();
-                const readyList = data.candidates.filter(c => c.evidence.s4_tag === 'READY');
-                document.getElementById('stat-ready').innerText = readyList.length;
+                // 메타데이터 업데이트
+                document.getElementById('last-update').innerText = `DATA: ${data.metadata.generated_at}`;
 
-                // Top Pick 로직 (Ready 중 반등폭 큰 순서)
-                readyList.sort((a, b) => b.metrics.rec_rate - a.metrics.rec_rate);
-                const topPick = readyList[0] || data.candidates[0];
-
-                if (topPick) {
-                    document.getElementById('top-pick-ticker').innerText = `${topPick.ticker} $${topPick.price}`;
-                    document.getElementById('top-pick-desc').innerText = 
-                        `${topPick.ticker}은(는) 고점 대비 -${topPick.metrics.drop_rate.toFixed(1)}% 하락했으나, 최근 바닥에서 +${(topPick.metrics.rec_rate*100).toFixed(1)}% 반등하며 추세 전환을 시도 중입니다.`;
+                // 데이터 처리: READY 종목 중 반등폭(rec_rate) 높은 순 정렬
+                let candidates = data.candidates;
+                let readyStocks = candidates.filter(c => c.evidence.s4_tag === 'READY');
+                
+                // 만약 READY가 5개 미만이면 WATCH에서도 데려옴
+                if (readyStocks.length < 5) {
+                    const watchStocks = candidates.filter(c => c.evidence.s4_tag === 'WATCH');
+                    readyStocks = [...readyStocks, ...watchStocks];
                 }
 
-                // 2. 리스트 생성
+                // 정렬 (반등률 내림차순)
+                readyStocks.sort((a, b) => b.metrics.rec_rate - a.metrics.rec_rate);
+                
+                // --- 1. Elite 5 렌더링 ---
+                const eliteContainer = document.getElementById('elite-container');
+                eliteContainer.innerHTML = '';
+                
+                readyStocks.slice(0, 5).forEach((stock, idx) => {
+                    const price = stock.price;
+                    const dropRate = stock.metrics.drop_rate; // 음수 (예: -0.6)
+                    const recRate = stock.metrics.rec_rate;   // 양수 (예: 0.2)
+
+                    // [핵심] 고점과 저점 역산 (Reverse Calculation)
+                    // 현재가 = 고점 * (1 + dropRate)  -> 고점 = 현재가 / (1 + dropRate)
+                    // 현재가 = 저점 * (1 + recRate)   -> 저점 = 현재가 / (1 + recRate)
+                    const highPrice = price / (1 + dropRate);
+                    const lowPrice = price / (1 + recRate);
+                    
+                    // 현재 위치 퍼센트 (0% = 저점, 100% = 고점)
+                    // 공식: (현재가 - 저점) / (고점 - 저점) * 100
+                    let posPercent = ((price - lowPrice) / (highPrice - lowPrice)) * 100;
+                    posPercent = Math.max(0, Math.min(100, posPercent)); // 0~100 제한
+
+                    const html = `
+                        <div class="card elite-card p-4 flex flex-col justify-between h-full cursor-pointer hover:scale-105 transition-transform" onclick="document.getElementById('row-${stock.ticker}').scrollIntoView({behavior: 'smooth'}); toggleRow('${stock.ticker}')">
+                            <div class="elite-badge">TOP ${idx + 1}</div>
+                            <div>
+                                <div class="text-2xl font-bold text-white mb-1">${stock.ticker}</div>
+                                <div class="text-sm font-mono text-gray-400">$${price.toFixed(2)}</div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <div class="flex justify-between text-[10px] text-gray-500 mb-1">
+                                    <span>저점 $${lowPrice.toFixed(1)}</span>
+                                    <span>고점 $${highPrice.toFixed(1)}</span>
+                                </div>
+                                <div class="w-full bg-gray-700 h-1.5 rounded-full overflow-hidden relative">
+                                    <div class="absolute bg-green-500 h-full rounded-full" style="width: ${posPercent}%"></div>
+                                </div>
+                                <div class="text-right mt-1">
+                                    <span class="text-xs font-bold text-green-400">+${(recRate * 100).toFixed(1)}% 반등중</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    eliteContainer.insertAdjacentHTML('beforeend', html);
+                });
+
+
+                // --- 2. 전체 리스트 렌더링 (새로운 시각화 적용) ---
                 const listContainer = document.getElementById('candidate-list');
                 listContainer.innerHTML = '';
 
-                data.candidates.forEach((stock, index) => {
+                candidates.forEach((stock, index) => {
                     const isReady = stock.evidence.s4_tag === 'READY';
-                    const tagClass = isReady ? 'tag-ready' : 'tag-watch';
-                    const drop = Math.abs(stock.metrics.drop_rate).toFixed(1);
-                    const rec = (stock.metrics.rec_rate * 100).toFixed(1);
+                    const tagClass = isReady ? 'text-green-400 border-green-500/30 bg-green-500/10' : 'text-blue-400 border-blue-500/30 bg-blue-500/10';
                     
-                    // 뉴스 제목 (없으면 기본값)
-                    let newsTitle = stock.context;
-                    if (newsTitle.length > 80) newsTitle = newsTitle.substring(0, 80) + "...";
+                    // 가격 역산 로직 (위와 동일)
+                    const price = stock.price;
+                    const highPrice = price / (1 + stock.metrics.drop_rate);
+                    const lowPrice = price / (1 + stock.metrics.rec_rate);
+                    
+                    // 위치 계산 (Range Position)
+                    let posPercent = ((price - lowPrice) / (highPrice - lowPrice)) * 100;
+                    posPercent = Math.max(5, Math.min(95, posPercent)); // 마커가 밖으로 안 나가게 조정
 
-                    // 리스트 아이템 (카드 형태)
+                    // 뉴스 요약
+                    let newsTitle = stock.context.length > 60 ? stock.context.substring(0, 60) + "..." : stock.context;
+
                     const itemHTML = `
-                        <div class="card overflow-hidden transition hover:border-gray-500">
-                            <div class="p-4 flex flex-col md:flex-row items-center justify-between cursor-pointer" onclick="toggleRow(${index})">
-                                <div class="flex items-center w-full md:w-1/4 mb-4 md:mb-0">
-                                    <div class="w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center mr-4 font-bold text-xl text-white border border-gray-700">
-                                        ${stock.ticker[0]}
-                                    </div>
-                                    <div>
-                                        <div class="text-xl font-bold text-white">${stock.ticker}</div>
-                                        <div class="text-sm font-mono text-gray-400">$${stock.price}</div>
-                                    </div>
-                                </div>
-
-                                <div class="w-full md:w-1/3 px-4 mb-4 md:mb-0">
-                                    <div class="flex justify-between text-xs mb-1">
-                                        <span class="text-gray-400">낙폭 (Drop)</span>
-                                        <span class="text-red-400 font-bold">-${drop}%</span>
-                                    </div>
-                                    <div class="bar-bg mb-3">
-                                        <div class="bar-fill-red" style="width: ${Math.min(drop, 100)}%"></div>
-                                    </div>
+                        <div id="row-${stock.ticker}" class="card overflow-hidden">
+                            <div class="p-4 cursor-pointer" onclick="toggleRow('${stock.ticker}')">
+                                <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
                                     
-                                    <div class="flex justify-between text-xs mb-1">
-                                        <span class="text-gray-400">반등 (Recovery)</span>
-                                        <span class="text-green-400 font-bold">+${rec}%</span>
+                                    <div class="w-full md:w-24 flex items-center justify-between md:block">
+                                        <div class="text-xl font-bold text-white">${stock.ticker}</div>
+                                        <div class="text-sm font-mono text-gray-400">$${price}</div>
                                     </div>
-                                    <div class="bar-bg">
-                                        <div class="bar-fill-green" style="width: ${Math.min(rec*3, 100)}%"></div>
-                                    </div>
-                                </div>
 
-                                <div class="w-full md:w-1/3 text-right pl-4">
-                                    <div class="text-xs text-gray-500 mb-2 truncate text-left md:text-right">${newsTitle}</div>
-                                    <span class="px-3 py-1 rounded text-xs font-bold ${tagClass}">${stock.evidence.s4_tag}</span>
-                                    <i id="icon-${index}" class="fa-solid fa-chevron-down text-gray-600 ml-3 text-xs transition-transform"></i>
+                                    <div class="w-full flex-1">
+                                        <div class="range-track">
+                                            <div class="current-marker" style="left: ${posPercent}%"></div>
+                                            
+                                            <div class="price-label current" style="left: ${posPercent}%">$${price}</div>
+                                            <div class="price-label low">▼ 바닥 $${lowPrice.toFixed(1)}</div>
+                                            <div class="price-label high">고점 $${highPrice.toFixed(1)} ▲</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="w-full md:w-32 flex justify-between md:justify-end items-center mt-4 md:mt-0">
+                                        <span class="px-2 py-1 rounded text-xs font-bold border ${tagClass} mr-3">${stock.evidence.s4_tag}</span>
+                                        <i id="icon-${stock.ticker}" class="fa-solid fa-chevron-down text-gray-500 transition-transform"></i>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div id="detail-${index}" class="hidden-row px-6 py-6 bg-[#11141a] border-t border-gray-800">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div id="detail-${stock.ticker}" class="hidden-row p-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
-                                        <h4 class="text-xs font-bold text-blue-400 uppercase mb-3"><i class="fa-solid fa-robot mr-2"></i>AI 전략 분석 보고서</h4>
-                                        <div class="text-sm text-gray-300 leading-7 whitespace-pre-line bg-gray-900/50 p-4 rounded border border-gray-800">
-                                            ${stock.evidence.analysis_kr}
+                                        <h4 class="text-xs font-bold text-gray-500 uppercase mb-2">📊 AI Strategy Analysis</h4>
+                                        <div class="text-sm text-gray-300 leading-relaxed whitespace-pre-line">
+                                            ${stock.evidence.analysis_kr || "분석 데이터 없음"}
+                                        </div>
+                                        <div class="mt-4 text-xs text-gray-500">
+                                            * 이 종목이 다시 고점($${highPrice.toFixed(2)})까지 간다면? 
+                                            <span class="text-green-400 font-bold text-sm ml-1">
+                                                +${((highPrice/price - 1)*100).toFixed(0)}% 수익 가능성
+                                            </span>
                                         </div>
                                     </div>
-                                    
                                     <div>
-                                        <h4 class="text-xs font-bold text-gray-500 uppercase mb-3"><i class="fa-regular fa-newspaper mr-2"></i>관련 뉴스 (News Context)</h4>
-                                        <div class="text-sm text-gray-400 p-3 mb-3 border-l-2 border-gray-700">
-                                            "${stock.context}"
+                                        <h4 class="text-xs font-bold text-gray-500 uppercase mb-2">📰 Latest News</h4>
+                                        <div class="bg-black/30 p-3 rounded border border-gray-800 text-sm text-gray-400 mb-2">
+                                            ${stock.context}
                                         </div>
-                                        <a href="https://www.google.com/search?q=${stock.ticker}+stock+news" target="_blank" 
-                                           class="inline-flex items-center text-xs text-blue-400 hover:text-blue-300 hover:underline">
-                                            구글 뉴스 원문 전체보기 <i class="fa-solid fa-external-link-alt ml-1"></i>
+                                        <a href="https://www.google.com/search?q=${stock.ticker}+stock+news" target="_blank" class="text-xs text-blue-400 hover:underline">
+                                            구글 뉴스 검색 <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -198,14 +221,13 @@
 
             } catch (err) {
                 console.error(err);
-                document.getElementById('candidate-list').innerHTML = `<div class="p-10 text-center text-red-500">데이터 로딩 실패.<br>${err}</div>`;
+                document.getElementById('candidate-list').innerHTML = `<div class="p-10 text-center text-red-500">데이터 로딩 중 오류 발생</div>`;
             }
         }
 
-        function toggleRow(index) {
-            const row = document.getElementById(`detail-${index}`);
-            const icon = document.getElementById(`icon-${index}`);
-            
+        function toggleRow(ticker) {
+            const row = document.getElementById(`detail-${ticker}`);
+            const icon = document.getElementById(`icon-${ticker}`);
             if (row.classList.contains('hidden-row')) {
                 row.classList.remove('hidden-row');
                 row.classList.add('expanded-row');
