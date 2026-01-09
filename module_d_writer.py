@@ -4,60 +4,91 @@ import os
 from datetime import datetime
 
 def export_to_json(input_path="data/candidates_c.csv", output_path="data/data.json"):
-    print("💾 Module D: Converting data to JSON for Dashboard...")
+    print("📝 Module D: Generating Operation Report...")
     
-    # 1. 데이터 로드 (파일이 없거나 비어있으면 빈 JSON 생성)
-    if not os.path.exists(input_path):
-        candidates = []
+    # --- [1. 전장 상황판 (단계별 로그 수집)] ---
+    logs = []
+    stats = {"universe": 0, "s1_filtered": 0, "s2_checked": 0, "final_ready": 0}
+
+    # Step A: Universe 확인
+    if os.path.exists("data/universe.csv"):
+        try:
+            uni_df = pd.read_csv("data/universe.csv")
+            stats['universe'] = len(uni_df)
+            logs.append(f"✅ [Step 1] Universe Secured: {len(uni_df):,} tickers found.")
+        except:
+            logs.append("⚠️ [Step 1] Universe file exists but is unreadable.")
     else:
+        logs.append("❌ [Step 1] Universe file NOT found. (Pipeline broken?)")
+
+    # Step B: Technical Scan 확인
+    if os.path.exists("data/candidates_b.csv"):
+        try:
+            b_df = pd.read_csv("data/candidates_b.csv")
+            stats['s1_filtered'] = len(b_df)
+            if len(b_df) > 0:
+                logs.append(f"✅ [Step 2] Technical Scan: {len(b_df)} candidates survived the drop.")
+            else:
+                logs.append("⚠️ [Step 2] No candidates met the technical criteria.")
+        except:
+            logs.append("⚠️ [Step 2] Scanner file error.")
+    else:
+        logs.append("⏭️ [Step 2] Scanner output missing (Skipped or Failed).")
+
+    # Step C: News Analysis 확인
+    candidates = []
+    if os.path.exists(input_path):
         try:
             df = pd.read_csv(input_path)
-            candidates = []
+            stats['s2_checked'] = len(df)
             
-            for _, row in df.iterrows():
-                # HTML 대시보드가 요구하는 데이터 구조로 매핑
-                rec_rate = row.get('recovery_rate', 0) / 100.0 # 퍼센트를 소수로 변환
+            if not df.empty:
+                logs.append(f"✅ [Step 3] News Filter: {len(df)} candidates passed risk check.")
                 
-                # 태그 결정 로직 (반등폭 10% 이상이면 READY)
-                tag = "READY" if rec_rate >= 0.10 else "WATCH"
-                
-                candidate = {
-                    "ticker": str(row['ticker']),
-                    "price": float(row['price']),
-                    "metrics": {
-                        "rec_rate": rec_rate
-                    },
-                    "evidence": {
-                        "s4_tag": tag
-                    },
-                    "context": str(row.get('news_top', 'No News Data'))
-                }
-                candidates.append(candidate)
+                # 데이터 매핑 시작
+                for _, row in df.iterrows():
+                    rec_rate = row.get('recovery_rate', 0) / 100.0
+                    tag = "READY" if rec_rate >= 0.10 else "WATCH"
+                    if tag == "READY": stats['final_ready'] += 1
+                    
+                    candidate = {
+                        "ticker": str(row['ticker']),
+                        "price": float(row['price']),
+                        "metrics": {
+                            "drop_rate": row.get('drop_rate', 0),
+                            "rec_rate": rec_rate
+                        },
+                        "evidence": {
+                            "s4_tag": tag
+                        },
+                        "context": str(row.get('news_top', 'No News Data'))
+                    }
+                    candidates.append(candidate)
+            else:
+                logs.append("⚠️ [Step 3] Candidates list is empty after news filter.")
         except Exception as e:
-            print(f"⚠️ Error reading CSV: {e}")
-            candidates = []
+            logs.append(f"❌ [Step 3] Error processing final CSV: {str(e)}")
+    else:
+        logs.append("❌ [Step 3] Final candidate file not found.")
 
-    # 2. 메타데이터 생성 (통계치)
-    # 실제 카운트를 위해 universe 파일 등을 읽어야 하지만, 약식으로 처리
-    try:
-        uni_count = len(pd.read_csv("data/universe.csv")) if os.path.exists("data/universe.csv") else 6000
-    except: uni_count = 6000
+    logs.append("🏁 [System] Report generation complete.")
 
+    # --- [2. 최종 JSON 패키징] ---
     data = {
         "metadata": {
             "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S KST"),
-            "pipeline_stats": {
-                "universe": uni_count,
-                "s1_drawdown": 300, # 스캔 대상 수 (Scanner 코드의 제한 값)
-                "s3_news_risk": len(candidates)
-            }
+            "pipeline_stats": stats,
+            "system_logs": logs  # 대시보드에 뿌릴 로그 리스트
         },
         "candidates": candidates
     }
 
-    # 3. JSON 파일 저장
-    with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
-    
-    print(f"✅ Module D: JSON generated at {output_path}")
-    return True
+    # 파일 저장
+    try:
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
+        print(f"✅ Module D: JSON generated successfully at {output_path}")
+        return True
+    except Exception as e:
+        print(f"❌ Module D: Failed to save JSON - {e}")
+        return False
