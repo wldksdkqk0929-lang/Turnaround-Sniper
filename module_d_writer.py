@@ -51,6 +51,13 @@ def export_to_json(input_path="data/candidates_c.csv", output_path="data/data.js
                     tag = "READY" if rec_rate >= 0.10 else "WATCH"
                     if tag == "READY": stats['final_ready'] += 1
                     
+                    # [수정] nan(빈값) 처리 로직 추가
+                    news_text = row.get('news_top', '')
+                    if pd.isna(news_text) or str(news_text).lower() == 'nan' or str(news_text).strip() == "":
+                        context_msg = "No significant news found"
+                    else:
+                        context_msg = str(news_text)
+
                     candidate = {
                         "ticker": str(row['ticker']),
                         "price": float(row['price']),
@@ -61,7 +68,7 @@ def export_to_json(input_path="data/candidates_c.csv", output_path="data/data.js
                         "evidence": {
                             "s4_tag": tag
                         },
-                        "context": str(row.get('news_top', 'No News Data'))
+                        "context": context_msg
                     }
                     candidates.append(candidate)
             else:
@@ -78,12 +85,11 @@ def export_to_json(input_path="data/candidates_c.csv", output_path="data/data.js
         "metadata": {
             "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S KST"),
             "pipeline_stats": stats,
-            "system_logs": logs  # 대시보드에 뿌릴 로그 리스트
+            "system_logs": logs
         },
         "candidates": candidates
     }
 
-    # 파일 저장
     try:
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
