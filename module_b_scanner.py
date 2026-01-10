@@ -4,19 +4,24 @@ import os
 import json
 
 def run_scanner():
-    print("📈 Module B: 실시간 주가 데이터 수집 중...")
-    if not os.path.exists("data/survivors.json"): return
+    print("📈 Module B: 주가 데이터 정밀 수집 중...")
+    if not os.path.exists("data/survivors.json"): 
+        print("❌ survivors.json이 없습니다.")
+        return
     
     with open("data/survivors.json", "r", encoding="utf-8") as f:
-        tickers = [item['ticker'] for item in json.load(f)['data']]
+        data = json.load(f).get('data', [])
+        tickers = [item['ticker'] for item in data]
 
     results = []
-    for t in tickers[:20]: # 상위 20개 우선 분석
+    for t in tickers[:15]: # 안정성을 위해 15개만 집중 분석
         try:
             stock = yf.Ticker(t)
-            # [수정] 데이터가 없을 경우를 대비해 여러 방식으로 가격 추출 시도
+            # 데이터를 1개월치 가져와서 마지막 종가 확인
             hist = stock.history(period="1mo")
-            if hist.empty: continue
+            if hist.empty:
+                print(f"   ⚠️ {t}: 데이터를 찾을 수 없음")
+                continue
             
             current_price = hist['Close'].iloc[-1]
             high_price = hist['High'].max()
@@ -28,12 +33,15 @@ def run_scanner():
                 "drop_rate": round(float(drop_rate), 4),
                 "charts": {"daily_6m": hist['Close'].tail(30).tolist()}
             })
-            print(f"   {t}: ${current_price:.2f} 확보 완료")
-        except: continue
+            print(f"   ✅ {t}: ${current_price:.2f} 확보")
+        except Exception as e:
+            print(f"   ❌ {t} 오류: {e}")
+            continue
 
+    os.makedirs("data", exist_ok=True)
     with open("data/survivors.json", "w", encoding="utf-8") as f:
         json.dump({"data": results}, f)
-    print(f"✅ Module B 완료: {len(results)}개 종목 가격 업데이트.")
+    print(f"🏁 Module B 완료: {len(results)}개 종목 가격 주입 성공.")
 
 if __name__ == "__main__":
     run_scanner()
