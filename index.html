@@ -3,61 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sniper Pro | Command Center V3.5</title>
+    <title>Sniper Pro | Command Center V4.0 Banana Chart</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800&display=swap');
         body { font-family: 'Pretendard', sans-serif; background-color: #0d1117; color: #e6edf3; }
-        
-        /* 1. 가시성 확보: 중앙 집중형 카드 디자인 */
-        .container-tight { max-width: 1000px; margin: 0 auto; } /* 너무 넓지 않게 제한 */
+        .container-tight { max-width: 1100px; margin: 0 auto; }
         
         .card { 
-            background: #161b22; 
-            border: 1px solid #30363d; 
-            border-radius: 12px; 
-            transition: all 0.2s ease;
+            background: #161b22; border: 1px solid #30363d; border-radius: 12px; transition: all 0.2s ease;
         }
         .card:hover { 
-            border-color: #79c0ff; 
-            transform: translateY(-2px); 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-            background-color: #1c2128;
+            border-color: #79c0ff; transform: translateY(-2px); background-color: #1c2128;
         }
         
-        /* Elite 5 카드 */
+        /* Elite 5 카드 및 차트 영역 */
         .elite-card { background: linear-gradient(135deg, #161b22 0%, #0d1117 100%); border: 1px solid #3fb950; position: relative; overflow: hidden; }
         .elite-badge { position: absolute; top: 0; right: 0; background: #3fb950; color: #000; font-weight: 800; font-size: 0.7rem; padding: 2px 10px; border-bottom-left-radius: 8px; }
+        .chart-container { height: 40px; width: 100%; margin-top: 10px; }
+        .chart-container svg { width: 100%; height: 100%; overflow: visible; }
 
-        /* 3. 의미 있는 스테이터스 바 (Power Gauge) */
-        .gauge-track { width: 100%; height: 8px; background: #30363d; border-radius: 4px; position: relative; overflow: hidden; margin-top: 8px; }
-        .gauge-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
-        
-        /* 반등 강도에 따른 색상 */
-        .power-low { background: linear-gradient(90deg, #30363d, #8b949e); }   /* 약함 */
-        .power-mid { background: linear-gradient(90deg, #238636, #3fb950); }   /* 중간 */
-        .power-high { background: linear-gradient(90deg, #3fb950, #f2cc60); box-shadow: 0 0 10px rgba(63, 185, 80, 0.4); } /* 강함 */
-
+        /* 메인 리스트 스타일 */
+        .tag-ready { color: #3fb950; background: rgba(63, 185, 80, 0.15); border: 1px solid rgba(63, 185, 80, 0.4); }
+        .tag-watch { color: #58a6ff; background: rgba(88, 166, 255, 0.15); border: 1px solid rgba(88, 166, 255, 0.4); }
         .hidden-row { display: none; }
-        .expanded-row { background-color: #11141a; border-top: 1px dashed #30363d; animation: slideDown 0.3s ease-out; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* 텍스트 가독성 */
+        .expanded-row { background-color: #11141a; border-top: 1px dashed #30363d; }
         .txt-label { font-size: 0.7rem; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; }
     </style>
 </head>
 <body class="p-6 md:p-10">
-
     <div class="container-tight">
         <header class="flex justify-between items-center mb-10 border-b border-gray-800 pb-6">
-            <div>
-                <h1 class="text-3xl font-extrabold text-white flex items-center">
-                    <i class="fa-solid fa-crosshairs text-green-500 mr-3"></i>
-                    Turnaround Sniper
-                    <span class="ml-3 text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded border border-gray-700">V3.5 STABLE</span>
-                </h1>
-            </div>
+            <h1 class="text-3xl font-extrabold text-white flex items-center">
+                <i class="fa-solid fa-crosshairs text-green-500 mr-3"></i> Turnaround Sniper
+                <span class="ml-3 text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded border border-gray-700">V4.0 CHART</span>
+            </h1>
             <div class="text-right">
                 <div id="last-update" class="text-xs font-mono text-gray-500">Connecting...</div>
                 <div class="text-xs text-green-500 font-bold mt-1"><i class="fa-solid fa-server mr-1"></i>System Active</div>
@@ -67,7 +48,7 @@
         <section class="mb-10">
             <div class="flex items-center space-x-2 mb-4">
                 <i class="fa-solid fa-star text-yellow-500"></i>
-                <h2 class="text-lg font-bold text-gray-200">Top 5 Strongest Rebounds</h2>
+                <h2 class="text-lg font-bold text-gray-200">Top 5 V-Shape Rebounds (3-Month View)</h2>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-5 gap-4" id="elite-container">
                 </div>
@@ -76,15 +57,12 @@
         <main>
             <div class="flex items-center justify-between mb-4 px-2">
                 <h3 class="text-md font-bold text-gray-300"><i class="fa-solid fa-list-ul mr-2"></i>Active Candidates</h3>
-                <span class="text-xs text-gray-500">목록을 클릭하여 상세 분석 확인</span>
             </div>
-
             <div class="hidden md:grid grid-cols-12 gap-6 px-6 pb-2 text-xs font-bold text-gray-500 uppercase">
                 <div class="col-span-3">Target Asset</div>
-                <div class="col-span-4">Rebound Strength (Momentum)</div>
+                <div class="col-span-4">3-Month Price Trend (Nano Chart)</div>
                 <div class="col-span-5 text-right">Primary Context</div>
             </div>
-
             <div class="flex flex-col space-y-4" id="candidate-list">
                 <div class="p-10 text-center text-gray-600">데이터를 불러오는 중입니다...</div>
             </div>
@@ -92,133 +70,146 @@
     </div>
 
     <script>
+        // [핵심 기술] 나노 바나나 차트 그리기 엔진 (SVG)
+        function drawSparkline(data, color = '#3fb950') {
+            if (!data || data.length < 2) return '<div class="text-xs text-gray-600 h-full flex items-center">No Data</div>';
+            
+            const width = 200; // SVG 내부 좌표계 너비
+            const height = 50; // SVG 내부 좌표계 높이
+            const min = Math.min(...data);
+            const max = Math.max(...data);
+            const range = max - min || 1; // 0으로 나누기 방지
+
+            // 데이터를 SVG 좌표로 변환하는 함수
+            const normalize = (val) => height - ((val - min) / range) * height;
+
+            // 선 그리기 경로(Path) 생성
+            let pathD = `M 0 ${normalize(data[0])} `;
+            const stepX = width / (data.length - 1);
+            data.slice(1).forEach((val, i) => {
+                pathD += `L ${(i + 1) * stepX} ${normalize(val)} `;
+            });
+
+            // 그라데이션 채우기 영역 생성 (선 아래를 색칠)
+            const fillD = `${pathD} L ${width} ${height} L 0 ${height} Z`;
+
+            return `
+                <svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="grad-${color.replace('#','')}" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:${color};stop-opacity:0.4" />
+                            <stop offset="100%" style="stop-color:${color};stop-opacity:0.0" />
+                        </linearGradient>
+                    </defs>
+                    <path d="${fillD}" fill="url(#grad-${color.replace('#','')})" stroke="none" />
+                    <path d="${pathD}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+                </svg>
+            `;
+        }
+
         async function loadDashboard() {
             try {
                 const response = await fetch('data/data.json?t=' + Date.now());
                 const data = await response.json();
 
-                // 1. 데이터 전처리 (Math Fix)
+                // 데이터 전처리 (수치 계산 및 히스토리 파싱)
                 let candidates = data.candidates.map(c => {
-                    // [중요] drop_rate가 -40.5 처럼 퍼센트로 오므로 /100 필수
-                    const dropDecimal = c.metrics.drop_rate / 100; 
-                    const recDecimal = c.metrics.rec_rate; // 얘는 이미 소수점임 (0.13)
-                    
-                    // 고점/저점 역산
-                    const price = c.price;
-                    const highPrice = price / (1 + dropDecimal); // 분모가 0.6이 됨 -> 정상 계산
-                    const lowPrice = price / (1 + recDecimal);
-                    
-                    // 잠재 수익률 계산 (현재가 -> 전고점)
-                    const upside = ((highPrice / price) - 1) * 100;
+                    // 문자열로 저장된 history를 다시 숫자 배열로 변환
+                    let historyData = [];
+                    try {
+                        historyData = JSON.parse(c.history.replace(/'/g, '"')); # 작은따옴표를 큰따옴표로 바꿔서 JSON 파싱
+                    } catch (e) { historyData = []; }
 
-                    return { ...c, highPrice, lowPrice, upside, recDecimal, dropDecimal };
+                    const highPrice = c.high_52w; // 이제 스캐너가 정확히 줌
+                    const lowPrice = c.low_52w;
+                    const upside = highPrice > 0 ? ((highPrice / c.price) - 1) * 100 : 0;
+
+                    return { ...c, highPrice, lowPrice, upside, historyData };
                 });
 
                 // 정렬 (반등폭 순)
                 let readyStocks = candidates.filter(c => c.evidence.s4_tag === 'READY');
                 if (readyStocks.length < 5) readyStocks = [...readyStocks, ...candidates.filter(c => c.evidence.s4_tag === 'WATCH')];
-                readyStocks.sort((a, b) => b.recDecimal - a.recDecimal);
+                readyStocks.sort((a, b) => b.metrics.recovery_rate - a.metrics.recovery_rate);
 
-                // 메타데이터
                 document.getElementById('last-update').innerText = `DATA: ${data.metadata.generated_at}`;
 
-                // --- 1. Elite 5 렌더링 ---
+                // --- 1. Elite 5 + Nano Charts ---
                 const eliteContainer = document.getElementById('elite-container');
                 eliteContainer.innerHTML = '';
                 readyStocks.slice(0, 5).forEach((stock, idx) => {
-                    const recPercent = (stock.recDecimal * 100).toFixed(1);
+                    const recPercent = (stock.metrics.recovery_rate * 100).toFixed(1);
+                    // 차트 그리기 함수 호출!
+                    const chartSVG = drawSparkline(stock.historyData, '#3fb950');
+
                     const html = `
                         <div class="card elite-card p-4 cursor-pointer hover:scale-105 transition-transform" onclick="document.getElementById('row-${stock.ticker}').scrollIntoView({behavior: 'smooth'}); toggleRow('${stock.ticker}')">
                             <div class="elite-badge">#${idx + 1}</div>
                             <div class="text-2xl font-bold text-white mb-1">${stock.ticker}</div>
-                            <div class="text-xs text-green-400 font-bold mb-3">+${recPercent}% Rebound</div>
-                            <div class="w-full bg-gray-800 h-1 rounded-full overflow-hidden">
-                                <div class="bg-green-500 h-full" style="width: ${Math.min(recPercent * 2, 100)}%"></div>
+                            <div class="text-xs text-green-400 font-bold">+${recPercent}% Rebound</div>
+                            <div class="chart-container">
+                                ${chartSVG}
                             </div>
                         </div>
                     `;
                     eliteContainer.insertAdjacentHTML('beforeend', html);
                 });
 
-                // --- 2. 메인 리스트 렌더링 ---
+                // --- 2. 메인 리스트 + Nano Charts ---
                 const listContainer = document.getElementById('candidate-list');
                 listContainer.innerHTML = '';
 
                 candidates.forEach(stock => {
                     const isReady = stock.evidence.s4_tag === 'READY';
-                    const tagClass = isReady ? 'text-green-400 border-green-500/30 bg-green-500/10' : 'text-blue-400 border-blue-500/30 bg-blue-500/10';
-                    const recPercent = (stock.recDecimal * 100).toFixed(1);
+                    const tagClass = isReady ? 'text-green-400 border-green-500/30' : 'text-blue-400 border-blue-500/30';
+                    const chartColor = isReady ? '#3fb950' : '#58a6ff';
                     
-                    // 스테이터스 바 디자인 (반등 강도에 따라 다르게)
-                    // 반등이 5% 미만: 회색, 5~15%: 초록, 15% 이상: 밝은 초록+금색
-                    let barClass = 'power-low';
-                    if (stock.recDecimal > 0.15) barClass = 'power-high';
-                    else if (stock.recDecimal > 0.05) barClass = 'power-mid';
-
-                    // 바 채움 정도 (최대 30% 반등을 꽉 찬 걸로 가정하여 시각적 차별화)
-                    let barWidth = Math.min((stock.recDecimal * 100) * 3, 100); 
-
-                    // 뉴스 요약
+                    // 차트 그리기 함수 호출!
+                    const chartSVG = drawSparkline(stock.historyData, chartColor);
+                    
                     let newsText = stock.context || "";
                     if (newsText.length > 70) newsText = newsText.substring(0, 70) + "...";
-                    if (newsText === "No significant news found") newsText = "특이 뉴스 없음 (기술적 반등 구간)";
 
                     const itemHTML = `
                         <div id="row-${stock.ticker}" class="card group">
                             <div class="p-5 cursor-pointer grid grid-cols-1 md:grid-cols-12 gap-6 items-center" onclick="toggleRow('${stock.ticker}')">
-                                
                                 <div class="md:col-span-3 flex items-center space-x-4">
                                     <div class="w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center text-xl font-bold text-white border border-gray-700">
                                         ${stock.ticker[0]}
                                     </div>
                                     <div>
                                         <div class="text-2xl font-bold text-white leading-none">${stock.ticker}</div>
-                                        <div class="text-sm font-mono text-gray-400 mt-1">$${stock.price}</div>
+                                        <div class="text-sm font-mono text-gray-400 mt-1">$${stock.price.toFixed(2)}</div>
                                     </div>
                                     <span class="ml-2 px-2 py-0.5 rounded text-[10px] font-bold border ${tagClass}">${stock.evidence.s4_tag}</span>
                                 </div>
 
-                                <div class="md:col-span-4">
-                                    <div class="flex justify-between text-xs mb-1">
-                                        <span class="text-gray-500">바닥 탈출 강도</span>
-                                        <span class="${stock.recDecimal > 0.1 ? 'text-green-400' : 'text-gray-400'} font-bold">+${recPercent}%</span>
-                                    </div>
-                                    <div class="gauge-track">
-                                        <div class="gauge-fill ${barClass}" style="width: ${barWidth}%"></div>
-                                    </div>
-                                    <div class="flex justify-between mt-1 text-[10px] text-gray-600">
-                                        <span>Weak</span>
-                                        <span>Strong</span>
+                                <div class="md:col-span-4 h-12 flex items-center">
+                                    <div class="chart-container h-full w-full" style="margin-top: 0;">
+                                        ${chartSVG}
                                     </div>
                                 </div>
 
                                 <div class="md:col-span-5 text-right pl-4 border-l border-gray-800 hidden md:block">
-                                    <div class="text-xs text-gray-300 group-hover:text-white transition-colors line-clamp-2">
-                                        ${newsText}
-                                    </div>
+                                    <div class="text-xs text-gray-300 group-hover:text-white transition-colors line-clamp-2">${newsText}</div>
                                 </div>
                             </div>
-
                             <div id="detail-${stock.ticker}" class="hidden-row p-8">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div>
                                         <h4 class="txt-label mb-2"><i class="fa-solid fa-chart-line mr-1"></i> Strategy Insight</h4>
                                         <div class="text-sm text-gray-300 leading-7 p-4 bg-gray-900 rounded border border-gray-800">
                                             ${stock.evidence.analysis_kr}
-                                            <div class="mt-4 pt-4 border-t border-gray-800">
-                                                <div class="flex justify-between items-center">
-                                                    <span class="text-xs text-gray-500">전고점($${stock.highPrice.toFixed(2)}) 복귀 시</span>
-                                                    <span class="text-lg font-bold text-green-400">+${stock.upside.toFixed(0)}% 수익 가능</span>
-                                                </div>
+                                            <div class="mt-4 pt-4 border-t border-gray-800 flex justify-between items-center">
+                                                <span class="text-xs text-gray-500">전고점($${stock.highPrice.toFixed(2)}) 복귀 시</span>
+                                                <span class="text-lg font-bold text-green-400">+${stock.upside.toFixed(0)}% 수익 가능</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div>
                                         <h4 class="txt-label mb-2"><i class="fa-regular fa-newspaper mr-1"></i> News Source</h4>
                                         <div class="text-sm text-gray-400 mb-2">"${stock.context}"</div>
-                                        <a href="https://www.google.com/search?q=${stock.ticker}+stock+news" target="_blank" class="text-blue-400 hover:underline text-xs">
-                                            구글 검색 바로가기 &rarr;
-                                        </a>
+                                        <a href="https://www.google.com/search?q=${stock.ticker}+stock+news" target="_blank" class="text-blue-400 hover:underline text-xs">Google Search &rarr;</a>
                                     </div>
                                 </div>
                             </div>
@@ -229,19 +220,13 @@
 
             } catch (err) {
                 console.error(err);
-                document.getElementById('candidate-list').innerHTML = `<div class="p-10 text-center text-red-500">오류 발생: ${err.message}</div>`;
+                document.getElementById('candidate-list').innerHTML = `<div class="p-10 text-center text-red-500">오류: 데이터 형식이 올바르지 않습니다. 스캔을 다시 실행해주세요.</div>`;
             }
         }
 
         function toggleRow(ticker) {
             const row = document.getElementById(`detail-${ticker}`);
-            if (row.classList.contains('hidden-row')) {
-                row.classList.remove('hidden-row');
-                row.classList.add('expanded-row');
-            } else {
-                row.classList.add('hidden-row');
-                row.classList.remove('expanded-row');
-            }
+            row.classList.toggle('hidden-row');
         }
 
         loadDashboard();
